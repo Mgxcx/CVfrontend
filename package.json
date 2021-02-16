@@ -27,6 +27,7 @@
     "react-native-screens": "~2.15.2",
     "react-native-size-matters": "^0.4.0",
     "react-native-svg": "^12.1.0",
+    "react-native-timeline-flatlist": "^0.7.3",
     "react-native-web": "~0.13.12",
     "react-redux": "^7.2.2"
   },
