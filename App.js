@@ -89,7 +89,6 @@ function CustomDrawerContent({ navigation }) {
   return (
     <View style={styles.container}>
       <Avatar.Image size={122} source={require("./assets/profile.jpg")} style={styles.avatar} />
-      <Text style={styles.text}>Quelques mots représentatifs...</Text>
       <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#3C7B9A" }}>
         <MaterialIcons name="auto-fix-high" size={18} color="#9B8878" /> Perfectionniste
       </Chip>
