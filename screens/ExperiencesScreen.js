@@ -34,7 +34,7 @@ function ExperiencesScreen() {
         "https://res.cloudinary.com/drchl4shw/image/upload/v1613578058/Capture_d_e%CC%81cran_2021-02-17_a%CC%80_16.54.37_qwgpql.png",
     },
     {
-      time: "Avril 2016 \nFévrier 2018",
+      time: "Février 2018 \nAvril 2016",
       title: "SALES EXECUTIVE",
       description:
         "Groupes affaires et loisirs : qualification, proposition, négociation et contrat\nPlan d’actions\nMaj sites distributeurs\nSupports de communication\nGestion de l’e-réputation\nOrganisation d’événements ",
@@ -43,7 +43,7 @@ function ExperiencesScreen() {
         "https://res.cloudinary.com/drchl4shw/image/upload/v1613578321/Capture_d_e%CC%81cran_2021-02-17_a%CC%80_16.55.04_tkifu9.png",
     },
     {
-      time: "Mars 2015 \nAoût 2015",
+      time: "Août 2015 \nMars 2015",
       title: "SALES & MARKETING ASSISTANT",
       description:
         "Plan d’actions\nRéalisation de sites web et de flyers\nGestion des sites distributeurs et de l’e-réputation\nGestion de la centrale de réservations\nDémarchage\nRéférencement\nGestion des promotions et tarifs\nGestion de l’établissement",
@@ -52,7 +52,7 @@ function ExperiencesScreen() {
       imageUrl: "https://res.cloudinary.com/drchl4shw/image/upload/v1613578630/logo_leckod.png",
     },
     {
-      time: "Sept 2013 \nAoût 2014",
+      time: "Août 2014 \nSept. 2013",
       title: "VERSATILE RECEPTIONIST",
       description: " ",
       icon: require("../assets/avatar4.png"),
@@ -60,7 +60,7 @@ function ExperiencesScreen() {
         "https://res.cloudinary.com/drchl4shw/image/upload/v1613578794/Capture_d_e%CC%81cran_2021-02-17_a%CC%80_16.58.52_wzbagp.png",
     },
     {
-      time: "Juin 2013 \nJuillet 2013",
+      time: "Juillet 2013 \nJuin 2013",
       title: "PRODUCTION OPERATOR",
       description: " ",
       icon: require("../assets/avatar2.png"),
@@ -68,7 +68,7 @@ function ExperiencesScreen() {
       imageUrl: "https://res.cloudinary.com/drchl4shw/image/upload/v1613579355/img-0476-2-_vr0sn1.jpg",
     },
     {
-      time: "Janvier 2012 \nOctobre 2012",
+      time: "Octobre 2012 \nJanvier 2012",
       title: "ORDER PICKER",
       description: " ",
       icon: require("../assets/avatar.png"),
