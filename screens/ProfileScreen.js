@@ -29,7 +29,7 @@ function ProfileScreen() {
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.container}>
-      <ImageBackground source={require("../assets/background1.jpg")} style={styles.image}>
+      <ImageBackground source={require("../assets/background8.jpg")} style={styles.image}>
         <View style={styles.viewavatar}>
           {avatarImage ? (
             <>
