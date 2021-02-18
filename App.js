@@ -71,9 +71,9 @@ const TabNavigator = () => {
           return <Text> {iconName} </Text>;
         },
       })}
-      activeColor="#9B8878"
-      inactiveColor="#B6B5AD"
-      barStyle={{ backgroundColor: "#F9FAF9" }}
+      activeColor="#983662"
+      inactiveColor="#be406c"
+      barStyle={{ backgroundColor: "#e8fcf6" }}
       sceneAnimationEnabled={true}
     >
       <Tab.Screen name="Profil" component={ProfileScreen} />
@@ -89,17 +89,17 @@ function CustomDrawerContent({ navigation }) {
   return (
     <View style={styles.container}>
       <Avatar.Image size={122} source={require("./assets/profile.jpg")} style={styles.avatar} />
-      <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#3C7B9A" }}>
-        <MaterialIcons name="auto-fix-high" size={18} color="#9B8878" /> Perfectionniste
+      <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
+        <MaterialIcons name="auto-fix-high" size={18} color="#be406c" /> Perfectionniste
       </Chip>
-      <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#3C7B9A" }}>
-        <FontAwesome5 name="hand-holding-heart" size={18} color="#9B8878" /> Empathique
+      <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
+        <FontAwesome5 name="hand-holding-heart" size={18} color="#be406c" /> Empathique
       </Chip>
-      <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#3C7B9A" }}>
-        <FontAwesome5 name="autoprefixer" size={18} color="#9B8878" /> Rigoureuse
+      <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
+        <FontAwesome5 name="autoprefixer" size={18} color="#be406c" /> Rigoureuse
       </Chip>
-      <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#3C7B9A" }}>
-        <FontAwesome5 name="paint-brush" size={18} color="#9B8878" /> Créative
+      <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
+        <FontAwesome5 name="paint-brush" size={18} color="#be406c" /> Créative
       </Chip>
     </View>
   );
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
-    backgroundColor: "#3C7B9A",
+    backgroundColor: "#C7F7E7",
   },
   avatar: {
     marginTop: 80,
@@ -128,10 +128,10 @@ const styles = StyleSheet.create({
   },
   chip: {
     marginTop: 15,
-    backgroundColor: "#B6B5AD",
+    backgroundColor: "#5ca784",
   },
   text: {
-    color: "#B6B5AD",
+    color: "#F9FAF9",
     fontSize: 18,
     marginBottom: 20,
   },
