@@ -10,9 +10,9 @@ function ExperiencesScreen() {
       title: "WEB DEVELOPER FULLSTACK JS",
       description:
         "Conception et prototypage d’applications \nRéalisation de 10 projets (HTML, CSS, JS (Es6), React, React Native)\nEt des projets persos à découvrir sur mon GitHub!",
-      lineColor: "#3C7B9A",
+      lineColor: "#5ca784",
       icon: require("../assets/avatar3.png"),
-      imageUrl: "https://res.cloudinary.com/drchl4shw/image/upload/v1613572930/logocapsule_hjziok.png",
+      imageUrl: "https://res.cloudinary.com/drchl4shw/image/upload/v1613648279/logocapsule_xj6roz.png",
     },
     {
       time: "Mars 2020 \nAvril 2019",
@@ -29,7 +29,7 @@ function ExperiencesScreen() {
       description:
         "Groupes affaires : qualification, proposition, négociation et contrat\nPlan d’actions\nSupports de communication\nAnalyse de la concurrence\nDémarchage",
       icon: require("../assets/avatar.png"),
-      lineColor: "#3C7B9A",
+      lineColor: "#5ca784",
       imageUrl:
         "https://res.cloudinary.com/drchl4shw/image/upload/v1613578058/Capture_d_e%CC%81cran_2021-02-17_a%CC%80_16.54.37_qwgpql.png",
     },
@@ -48,7 +48,7 @@ function ExperiencesScreen() {
       description:
         "Plan d’actions\nRéalisation de sites web et de flyers\nGestion des sites distributeurs et de l’e-réputation\nGestion de la centrale de réservations\nDémarchage\nRéférencement\nGestion des promotions et tarifs\nGestion de l’établissement",
       icon: require("../assets/avatar.png"),
-      lineColor: "#3C7B9A",
+      lineColor: "#5ca784",
       imageUrl: "https://res.cloudinary.com/drchl4shw/image/upload/v1613578630/logo_leckod.png",
     },
     {
@@ -64,7 +64,7 @@ function ExperiencesScreen() {
       title: "PRODUCTION OPERATOR",
       description: " ",
       icon: require("../assets/avatar2.png"),
-      lineColor: "#3C7B9A",
+      lineColor: "#5ca784",
       imageUrl: "https://res.cloudinary.com/drchl4shw/image/upload/v1613579355/img-0476-2-_vr0sn1.jpg",
     },
     {
@@ -107,9 +107,9 @@ function ExperiencesScreen() {
       <Timeline
         style={styles.list}
         data={data}
-        circleSize={20}
-        circleColor="#B6B5AD"
-        lineColor="#9B8878"
+        circleSize={32}
+        circleColor="#983662"
+        lineColor="#983662"
         timeContainerStyle={styles.datecontainer}
         timeStyle={styles.date}
         titleStyle={styles.title}
@@ -130,16 +130,16 @@ function ExperiencesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F9FAF9",
+    backgroundColor: "#e8fcf6",
   },
   list: {
     flex: 1,
     marginTop: 20,
   },
   title: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "bold",
-    color: "#1A1332",
+    color: "#4f8868",
     textAlign: "center",
   },
   descriptioncontainer: {
@@ -153,8 +153,8 @@ const styles = StyleSheet.create({
   },
   image: {
     marginTop: 5,
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     borderRadius: 30,
     borderColor: "#F9FAF9",
     borderWidth: 1,
@@ -165,8 +165,9 @@ const styles = StyleSheet.create({
   },
   date: {
     textAlign: "center",
-    backgroundColor: "#1A1332",
+    backgroundColor: "#be406c",
     color: "#F9FAF9",
+    fontWeight: "bold",
     padding: 5,
     borderRadius: 13,
   },
@@ -175,7 +176,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingLeft: 5,
     paddingRight: 5,
-    backgroundColor: "#B6B5AD",
+    backgroundColor: "#6dcaa4",
     borderRadius: 20,
     width: 160,
   },
