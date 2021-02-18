@@ -23,12 +23,31 @@ import {
   MaterialCommunityIcons,
   FontAwesome5,
 } from "@expo/vector-icons";
+import BouncingBalls from "react-native-bouncing-ball";
+
+import { LogBox } from "react-native";
 
 function ProfileScreen() {
   const [avatarImage, setAvatarImage] = useState("normal");
 
+  useEffect(() => {
+    LogBox.ignoreLogs(["Animated: `useNativeDriver`"]);
+  }, []);
+
   return (
     <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.container}>
+      <BouncingBalls
+        amount={10}
+        animationDuration={5000}
+        minSpeed={30}
+        maxSpeed={200}
+        minSize={40}
+        maxSize={100}
+        style={{
+          backgroundColor: "white",
+          opacity: 0.55,
+        }}
+      />
       {/* <ImageBackground source={require("../assets/background9.png")} style={styles.image}> */}
       <View style={styles.viewavatar}>
         {avatarImage ? (
