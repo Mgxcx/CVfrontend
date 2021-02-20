@@ -36,20 +36,23 @@ function StackScreen() {
         <View style={styles.stack6}>
           <Fontisto name="mongodb" size={56} color="#F9FAF9" />
         </View>
+        <View style={styles.stack7}>
+          <Fontisto name="redux" size={48} color="#983662" style={styles.redux} />
+        </View>
       </View>
       <Image source={require("../assets/stack.jpg")} style={styles.image} />
       <Text style={styles.text}>And my tools... </Text>
       <View style={styles.stackview}>
-        <View style={styles.stack7}>
+        <View style={styles.stack8}>
           <FontAwesome5 name="gitkraken" size={50} color="#C7F7E7" style={styles.gitkraken} />
         </View>
-        <View style={styles.stack8}>
+        <View style={styles.stack9}>
           <Image source={require("../assets/postman.png")} style={styles.logo3} />
         </View>
-        <View style={styles.stack9}>
+        <View style={styles.stack10}>
           <FontAwesome name="github-alt" size={51} color="#F9FAF9" />
         </View>
-        <View style={styles.stack10}>
+        <View style={styles.stack11}>
           <Image source={require("../assets/jest.png")} style={styles.logo4} />
         </View>
       </View>
@@ -156,9 +159,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#4f8868",
     alignItems: "center",
     justifyContent: "center",
+    marginRight: 10,
     marginTop: 10,
   },
   stack7: {
+    height: 65,
+    width: 65,
+    borderRadius: 32.5,
+    backgroundColor: "#6dcaa4",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+  },
+  stack8: {
     height: 65,
     width: 65,
     borderRadius: 32.5,
@@ -168,7 +181,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginRight: 10,
   },
-  stack8: {
+  stack9: {
     height: 65,
     width: 65,
     borderRadius: 32.5,
@@ -178,7 +191,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginRight: 10,
   },
-  stack9: {
+  stack10: {
     height: 65,
     width: 65,
     borderRadius: 32.5,
@@ -188,7 +201,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginRight: 10,
   },
-  stack10: {
+  stack11: {
     height: 65,
     width: 65,
     borderRadius: 32.5,
@@ -199,6 +212,9 @@ const styles = StyleSheet.create({
   },
   gitkraken: {
     marginTop: 3,
+  },
+  redux: {
+    marginBottom: 8,
   },
 });
 
