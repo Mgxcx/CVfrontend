@@ -2,15 +2,15 @@
 
 Projet d'application "CV" React Native en cours. Commencé le samedi 13 Février. 
 
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858688/CV1_sbbygc.png)
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858693/CV2_gx1vvk.png)
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858696/CV3_tlh9xo.png)
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858679/CV4_vbyqvm.png)
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858679/CV5_vqnrxn.png)
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858679/CV6_uilfe8.png)
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858680/CV7_mzt0fs.png)
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858680/CV8_s7ibmd.png)
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858680/CV9_ddbttu.png)
-![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613858680/CV10_d41g4e.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV1_tlng5l.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV2_mh7bye.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV3_fwrdf1.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV4_eisxr7.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV5_hlykvv.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV6_fzhr3o.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV7_gbu1ba.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV8_ceh3ce.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV9_dq159v.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1613865094/CV10_ceisrf.png)
 
 
