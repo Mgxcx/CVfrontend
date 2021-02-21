@@ -38,33 +38,33 @@ const TabNavigator = () => {
 
           if (route.name === "Profil") {
             iconName = focused ? (
-              <FontAwesome name="user-circle" size={22} color={color} />
+              <FontAwesome name="user-circle" size={21} color={color} />
             ) : (
-              <FontAwesome name="user-circle-o" size={22} color={color} />
+              <FontAwesome name="user-circle-o" size={20} color={color} />
             );
           } else if (route.name === "Expériences") {
             iconName = focused ? (
               <MaterialIcons name="work" size={22} color={color} />
             ) : (
-              <MaterialIcons name="work-outline" size={22} color={color} />
+              <MaterialIcons name="work-outline" size={20} color={color} />
             );
           } else if (route.name === "Stack") {
             iconName = focused ? (
               <Ionicons name="code-slash" size={22} color={color} />
             ) : (
-              <Ionicons name="code-slash-outline" size={22} color={color} />
+              <Ionicons name="code-slash-outline" size={20} color={color} />
             );
           } else if (route.name === "Formations") {
             iconName = focused ? (
               <Entypo name="graduation-cap" size={22} color={color} />
             ) : (
-              <SimpleLineIcons name="graduation" size={22} color={color} />
+              <SimpleLineIcons name="graduation" size={20} color={color} />
             );
           } else if (route.name === "Loisirs") {
             iconName = focused ? (
-              <MaterialCommunityIcons name="emoticon-lol" size={24} color={color} />
+              <MaterialCommunityIcons name="emoticon-lol" size={22} color={color} />
             ) : (
-              <MaterialCommunityIcons name="emoticon-lol-outline" size={24} color={color} />
+              <MaterialCommunityIcons name="emoticon-lol-outline" size={20} color={color} />
             );
           }
 
@@ -85,10 +85,10 @@ const TabNavigator = () => {
   );
 };
 
-function CustomDrawerContent({ navigation }) {
+const CustomDrawerContent = () => {
   return (
     <View style={styles.container}>
-      <Avatar.Image size={122} source={require("./assets/profile.jpg")} style={styles.avatar} />
+      <Avatar.Image size={122} source={require("./assets/profile2.jpeg")} style={styles.avatar} />
       <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
         <MaterialIcons name="auto-fix-high" size={18} color="#be406c" /> Perfectionniste
       </Chip>
@@ -103,7 +103,7 @@ function CustomDrawerContent({ navigation }) {
       </Chip>
     </View>
   );
-}
+};
 
 export default function App() {
   return (

@@ -27,7 +27,7 @@ import BouncingBalls from "react-native-bouncing-ball";
 
 import { LogBox } from "react-native";
 
-function ProfileScreen() {
+const ProfileScreen = () => {
   const [avatarImage, setAvatarImage] = useState("normal");
 
   useEffect(() => {
@@ -44,8 +44,8 @@ function ProfileScreen() {
         minSize={40}
         maxSize={100}
         style={{
-          backgroundColor: "white",
-          opacity: 0.55,
+          backgroundColor: "#C7F7E7",
+          opacity: 0.25,
         }}
       />
       {/* <ImageBackground source={require("../assets/background9.png")} style={styles.image}> */}
@@ -207,7 +207,7 @@ function ProfileScreen() {
       {/* </ImageBackground> */}
     </KeyboardAvoidingView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

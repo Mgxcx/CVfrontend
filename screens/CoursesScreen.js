@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, KeyboardAvoidingView, ScrollView, StyleSheet, Text } from "react-native";
 
-function CoursesScreen() {
+const CoursesScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
@@ -11,6 +11,6 @@ function CoursesScreen() {
       </KeyboardAvoidingView>
     </View>
   );
-}
+};
 
 export default CoursesScreen;

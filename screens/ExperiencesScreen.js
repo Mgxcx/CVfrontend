@@ -3,7 +3,7 @@ import { View, KeyboardAvoidingView, ScrollView, StyleSheet, Text, Image } from 
 import Timeline from "react-native-timeline-flatlist";
 import * as Animatable from "react-native-animatable";
 
-function ExperiencesScreen() {
+const ExperiencesScreen = () => {
   const data = [
     {
       time: "Aujourd'hui \nSept. 2020",
@@ -77,9 +77,9 @@ function ExperiencesScreen() {
     },
   ];
 
-  function renderDetail(rowData, sectionID, rowID) {
+  const renderDetail = (rowData, sectionID, rowID) => {
     let title = <Text style={styles.title}>{rowData.title}</Text>;
-    var desc = null;
+    let desc = null;
     if (rowData.description && rowData.imageUrl)
       desc = (
         <View style={styles.descriptioncontainer}>
@@ -100,7 +100,7 @@ function ExperiencesScreen() {
         {desc}
       </View>
     );
-  }
+  };
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.container}>
@@ -125,7 +125,7 @@ function ExperiencesScreen() {
       />
     </KeyboardAvoidingView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
