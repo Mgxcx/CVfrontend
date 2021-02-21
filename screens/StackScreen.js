@@ -11,7 +11,7 @@ import {
   Fontisto,
 } from "@expo/vector-icons";
 
-function StackScreen() {
+const StackScreen = () => {
   return (
     <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.container}>
       <Text style={styles.text}>Discover my Stack </Text>
@@ -41,7 +41,7 @@ function StackScreen() {
         </View>
       </View>
       <Image source={require("../assets/stack.jpg")} style={styles.image} />
-      <Text style={styles.text}>And my tools... </Text>
+      <Text style={styles.text2}>And my tools... </Text>
       <View style={styles.stackview}>
         <View style={styles.stack8}>
           <FontAwesome5 name="gitkraken" size={50} color="#C7F7E7" style={styles.gitkraken} />
@@ -58,7 +58,7 @@ function StackScreen() {
       </View>
     </KeyboardAvoidingView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -98,6 +98,13 @@ const styles = StyleSheet.create({
     marginRight: 3,
   },
   text: {
+    textAlign: "center",
+    color: "#3c6f75",
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  text2: {
+    marginTop: 50,
     textAlign: "center",
     color: "#3c6f75",
     fontWeight: "bold",
