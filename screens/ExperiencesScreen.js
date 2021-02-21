@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     borderRadius: 13,
   },
   details: {
-    marginLeft: 3,
+    alignSelf: "center",
     marginBottom: 20,
     paddingLeft: 5,
     paddingRight: 5,

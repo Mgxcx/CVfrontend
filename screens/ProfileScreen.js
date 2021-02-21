@@ -35,8 +35,8 @@ const ProfileScreen = () => {
   }, []);
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.container}>
-      <BouncingBalls
+    <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
+      {/* <BouncingBalls
         amount={10}
         animationDuration={5000}
         minSpeed={30}
@@ -47,164 +47,168 @@ const ProfileScreen = () => {
           backgroundColor: "#C7F7E7",
           opacity: 0.25,
         }}
-      />
-      {/* <ImageBackground source={require("../assets/background9.png")} style={styles.image}> */}
-      <View style={styles.viewavatar}>
-        {avatarImage ? (
-          <>
-            {avatarImage == "normal" && (
-              <Image
-                animation="fadeIn"
-                duration={1000}
-                source={require("../assets/avatar.png")}
-                style={styles.avatar}
-              />
-            )}
-            {avatarImage == "hospitality" && (
-              <Animatable.View style={styles.split2} animation="fadeIn" duration={1000}>
-                <View style={[styles.bubble, styles.bubbleOut]}>
-                  <View style={[styles.balloon, { backgroundColor: "#983662" }]}>
-                    <Text style={styles.textround}>Des soft skills du tonnerre pour une dev volontaire !</Text>
-                    <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
-                      <Svg
-                        style={styles.arrowRight}
-                        width={moderateScale(15.5, 0.6)}
-                        height={moderateScale(17.5, 0.6)}
-                        viewBox="32.485 17.5 15.515 17.5"
-                        enable-background="new 32.485 17.5 15.515 17.5"
-                      >
-                        <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#983662" x="0" y="0" />
-                      </Svg>
+      /> */}
+      <ImageBackground source={require("../assets/landscape1.jpg")} style={styles.image}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Margaux Chevreux</Text>
+          <Text style={styles.text}>Votre future {"\n"}développeuse</Text>
+        </View>
+        {/* <View style={styles.viewavatar}>
+          {avatarImage ? (
+            <>
+              {avatarImage == "normal" && (
+                <Image
+                  animation="fadeIn"
+                  duration={1000}
+                  source={require("../assets/avatar.png")}
+                  style={styles.avatar}
+                />
+              )}
+              {avatarImage == "hospitality" && (
+                <Animatable.View style={styles.split2} animation="fadeIn" duration={1000}>
+                  <View style={[styles.bubble, styles.bubbleOut]}>
+                    <View style={[styles.balloon, { backgroundColor: "#983662" }]}>
+                      <Text style={styles.textround}>Des soft skills du tonnerre pour une dev volontaire !</Text>
+                      <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
+                        <Svg
+                          style={styles.arrowRight}
+                          width={moderateScale(15.5, 0.6)}
+                          height={moderateScale(17.5, 0.6)}
+                          viewBox="32.485 17.5 15.515 17.5"
+                          enable-background="new 32.485 17.5 15.515 17.5"
+                        >
+                          <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#983662" x="0" y="0" />
+                        </Svg>
+                      </View>
                     </View>
                   </View>
-                </View>
-                <Image source={require("../assets/avatar2.png")} style={styles.avatar} />
-              </Animatable.View>
-            )}
-            {avatarImage == "development" && (
-              <Animatable.View style={styles.split2} animation="fadeIn" duration={1000}>
-                <View style={[styles.bubble, styles.bubbleOut]}>
-                  <View style={[styles.balloon, { backgroundColor: "#983662" }]}>
-                    <Text style={styles.textround}>Fan de React Native et React, très motivée !</Text>
-                    <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
-                      <Svg
-                        style={styles.arrowRight}
-                        width={moderateScale(15.5, 0.6)}
-                        height={moderateScale(17.5, 0.6)}
-                        viewBox="32.485 17.5 15.515 17.5"
-                        enable-background="new 32.485 17.5 15.515 17.5"
-                      >
-                        <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#983662" x="0" y="0" />
-                      </Svg>
+                  <Image source={require("../assets/avatar2.png")} style={styles.avatar} />
+                </Animatable.View>
+              )}
+              {avatarImage == "development" && (
+                <Animatable.View style={styles.split2} animation="fadeIn" duration={1000}>
+                  <View style={[styles.bubble, styles.bubbleOut]}>
+                    <View style={[styles.balloon, { backgroundColor: "#983662" }]}>
+                      <Text style={styles.textround}>Fan de React Native et React, très motivée !</Text>
+                      <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
+                        <Svg
+                          style={styles.arrowRight}
+                          width={moderateScale(15.5, 0.6)}
+                          height={moderateScale(17.5, 0.6)}
+                          viewBox="32.485 17.5 15.515 17.5"
+                          enable-background="new 32.485 17.5 15.515 17.5"
+                        >
+                          <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#983662" x="0" y="0" />
+                        </Svg>
+                      </View>
                     </View>
                   </View>
-                </View>
-                <Image source={require("../assets/avatar3.png")} style={styles.avatar} />
-              </Animatable.View>
-            )}
-            {avatarImage == "excited" && (
-              <Animatable.View style={styles.split2} animation="fadeIn" duration={1000}>
-                <View style={[styles.bubble, styles.bubbleOut]}>
-                  <View style={[styles.balloon, { backgroundColor: "#983662" }]}>
-                    <Text style={styles.textround}>Et un peu de gourmandise :P</Text>
-                    <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
-                      <Svg
-                        style={styles.arrowRight}
-                        width={moderateScale(15.5, 0.6)}
-                        height={moderateScale(17.5, 0.6)}
-                        viewBox="32.485 17.5 15.515 17.5"
-                        enable-background="new 32.485 17.5 15.515 17.5"
-                      >
-                        <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#983662" x="0" y="0" />
-                      </Svg>
+                  <Image source={require("../assets/avatar3.png")} style={styles.avatar} />
+                </Animatable.View>
+              )}
+              {avatarImage == "excited" && (
+                <Animatable.View style={styles.split2} animation="fadeIn" duration={1000}>
+                  <View style={[styles.bubble, styles.bubbleOut]}>
+                    <View style={[styles.balloon, { backgroundColor: "#983662" }]}>
+                      <Text style={styles.textround}>Et un peu de gourmandise :P</Text>
+                      <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
+                        <Svg
+                          style={styles.arrowRight}
+                          width={moderateScale(15.5, 0.6)}
+                          height={moderateScale(17.5, 0.6)}
+                          viewBox="32.485 17.5 15.515 17.5"
+                          enable-background="new 32.485 17.5 15.515 17.5"
+                        >
+                          <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#983662" x="0" y="0" />
+                        </Svg>
+                      </View>
                     </View>
                   </View>
-                </View>
-                <Image source={require("../assets/avatar4.png")} style={styles.avatar} />
-              </Animatable.View>
-            )}
-          </>
-        ) : (
-          <Text>Error</Text>
-        )}
-      </View>
-      <View style={styles.split}>
-        <Animatable.View style={styles.round} animation="shake" duration={7000} iterationCount="infinite">
-          <FontAwesome name="hotel" size={24} color="#F9FAF9" style={{ marginBottom: 10 }} />
-          <Text
-            style={styles.textround}
-            onPress={() => {
-              setAvatarImage("hospitality");
-            }}
-          >
-            7 années dans l'hôtellerie
-          </Text>
-        </Animatable.View>
+                  <Image source={require("../assets/avatar4.png")} style={styles.avatar} />
+                </Animatable.View>
+              )}
+            </>
+          ) : (
+            <Text>Error</Text>
+          )}
+        </View>
+        <View style={styles.split}>
+          <Animatable.View style={styles.round} animation="shake" duration={7000} iterationCount="infinite">
+            <FontAwesome name="hotel" size={24} color="#F9FAF9" style={{ marginBottom: 10 }} />
+            <Text
+              style={styles.textround}
+              onPress={() => {
+                setAvatarImage("hospitality");
+              }}
+            >
+              7 années dans l'hôtellerie
+            </Text>
+          </Animatable.View>
 
-        {avatarImage ? (
-          <>
-            {avatarImage == "hospitality" && (
-              <View style={styles.round4}>
-                <Text
-                  style={styles.textround}
+          {avatarImage ? (
+            <>
+              {avatarImage == "hospitality" && (
+                <View style={styles.round4}>
+                  <Text
+                    style={styles.textround}
+                    onPress={() => {
+                      setAvatarImage("hospitality");
+                    }}
+                  >
+                    Dont 5 {"\n"} dans la vente ;)
+                  </Text>
+                </View>
+              )}
+            </>
+          ) : (
+            <Text>Error</Text>
+          )}
+        </View>
+        <View style={styles.split2}>
+          {avatarImage ? (
+            <>
+              {avatarImage == "development" && (
+                <SocialIcon
+                  title="Mon GitHub !"
+                  button
+                  type="github-alt"
+                  style={styles.github}
+                  iconSize={13}
+                  iconStyle={styles.githubicon}
+                  fontStyle={styles.githubtext}
                   onPress={() => {
-                    setAvatarImage("hospitality");
+                    Linking.openURL("https://github.com/Mgxcx");
                   }}
-                >
-                  Dont 5 {"\n"} dans la vente ;)
-                </Text>
-              </View>
-            )}
-          </>
-        ) : (
-          <Text>Error</Text>
-        )}
-      </View>
-      <View style={styles.split2}>
-        {avatarImage ? (
-          <>
-            {avatarImage == "development" && (
-              <SocialIcon
-                title="Mon GitHub !"
-                button
-                type="github-alt"
-                style={styles.github}
-                iconSize={13}
-                iconStyle={styles.githubicon}
-                fontStyle={styles.githubtext}
-                onPress={() => {
-                  Linking.openURL("https://github.com/Mgxcx");
-                }}
-              />
-            )}
-          </>
-        ) : (
-          <Text>Error</Text>
-        )}
-        <Animatable.View style={styles.round2} animation="tada" duration={2000} iterationCount="infinite">
-          <FontAwesome5 name="laptop-code" size={24} color="#F9FAF9" style={{ marginBottom: 15 }} />
+                />
+              )}
+            </>
+          ) : (
+            <Text>Error</Text>
+          )}
+          <Animatable.View style={styles.round2} animation="tada" duration={2000} iterationCount="infinite">
+            <FontAwesome5 name="laptop-code" size={24} color="#F9FAF9" style={{ marginBottom: 15 }} />
+            <Text
+              style={styles.textround}
+              onPress={() => {
+                setAvatarImage("development");
+              }}
+            >
+              (Presque) 1 année de dév !
+            </Text>
+          </Animatable.View>
+        </View>
+        <Animatable.View style={styles.round3} animation="pulse" duration={800} iterationCount="infinite">
+          <FontAwesome5 name="coffee" size={24} color="#F9FAF9" style={{ marginBottom: 10 }} />
           <Text
             style={styles.textround}
             onPress={() => {
-              setAvatarImage("development");
+              setAvatarImage("excited");
             }}
           >
-            (Presque) 1 année de dév !
+            2 cafés par jour
           </Text>
-        </Animatable.View>
-      </View>
-      <Animatable.View style={styles.round3} animation="pulse" duration={800} iterationCount="infinite">
-        <FontAwesome5 name="coffee" size={24} color="#F9FAF9" style={{ marginBottom: 10 }} />
-        <Text
-          style={styles.textround}
-          onPress={() => {
-            setAvatarImage("excited");
-          }}
-        >
-          2 cafés par jour
-        </Text>
-      </Animatable.View>
-      {/* </ImageBackground> */}
+        </Animatable.View> */}
+      </ImageBackground>
     </KeyboardAvoidingView>
   );
 };
@@ -212,7 +216,22 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e8fcf6",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginTop: 90,
+  },
+  title: {
+    textAlign: "center",
+    color: "#3c6f75",
+    fontSize: 34,
+    fontWeight: "700",
+    marginBottom: 20,
+  },
+  text: {
+    textAlign: "center",
+    color: "#3c6f75",
+    fontSize: 24,
+    fontWeight: "600",
   },
   viewavatar: {
     alignItems: "flex-end",
@@ -290,8 +309,9 @@ const styles = StyleSheet.create({
     height: 120,
   },
   image: {
-    height: 660,
-    width: 380,
+    alignSelf: "center",
+    height: "100%",
+    width: "100%",
   },
   github: {
     alignSelf: "flex-start",
