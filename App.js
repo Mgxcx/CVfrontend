@@ -71,8 +71,8 @@ const TabNavigator = () => {
           return <Text> {iconName} </Text>;
         },
       })}
-      activeColor="#983662"
-      inactiveColor="#be406c"
+      activeColor="#3c6f75"
+      inactiveColor="#5ca784"
       barStyle={{ backgroundColor: "#e8fcf6" }}
       sceneAnimationEnabled={true}
     >

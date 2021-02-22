@@ -108,8 +108,8 @@ const ExperiencesScreen = () => {
         style={styles.list}
         data={data}
         circleSize={32}
-        circleColor="#983662"
-        lineColor="#983662"
+        circleColor="#be406c"
+        lineColor="#3c6f75"
         timeContainerStyle={styles.datecontainer}
         timeStyle={styles.date}
         titleStyle={styles.title}
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 17,
     fontWeight: "bold",
-    color: "#4f8868",
+    color: "#3c6f75",
     textAlign: "center",
   },
   descriptioncontainer: {
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   textdescription: {
     marginTop: 5,
-    color: "#F9FAF9",
+    color: "#3c6f75",
     textAlign: "center",
   },
   image: {
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   },
   date: {
     textAlign: "center",
-    backgroundColor: "#be406c",
+    backgroundColor: "#3c6f75",
     color: "#F9FAF9",
     fontWeight: "bold",
     padding: 5,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingLeft: 5,
     paddingRight: 5,
-    backgroundColor: "#6dcaa4",
+    backgroundColor: "#C7F7E7",
     borderRadius: 20,
     width: 160,
   },
