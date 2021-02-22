@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
   Linking,
 } from "react-native";
+
+import { Button } from "react-native-paper";
 import * as Animatable from "react-native-animatable";
 import { SocialIcon } from "react-native-elements";
 import Svg, { Path } from "react-native-svg";
@@ -23,191 +25,67 @@ import {
   MaterialCommunityIcons,
   FontAwesome5,
 } from "@expo/vector-icons";
-import BouncingBalls from "react-native-bouncing-ball";
+import GradientButton from "react-native-gradient-buttons";
 
 import { LogBox } from "react-native";
 
-const ProfileScreen = () => {
-  const [avatarImage, setAvatarImage] = useState("normal");
-
-  useEffect(() => {
-    LogBox.ignoreLogs(["Animated: `useNativeDriver`"]);
-  }, []);
-
+const ProfileScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
-      {/* <BouncingBalls
-        amount={10}
-        animationDuration={5000}
-        minSpeed={30}
-        maxSpeed={200}
-        minSize={40}
-        maxSize={100}
-        style={{
-          backgroundColor: "#C7F7E7",
-          opacity: 0.25,
-        }}
-      /> */}
       <ImageBackground source={require("../assets/landscape1.jpg")} style={styles.image}>
         <View style={styles.container}>
           <Text style={styles.title}>Margaux Chevreux</Text>
           <Text style={styles.text}>Votre future {"\n"}développeuse</Text>
-        </View>
-        {/* <View style={styles.viewavatar}>
-          {avatarImage ? (
-            <>
-              {avatarImage == "normal" && (
-                <Image
-                  animation="fadeIn"
-                  duration={1000}
-                  source={require("../assets/avatar.png")}
-                  style={styles.avatar}
-                />
-              )}
-              {avatarImage == "hospitality" && (
-                <Animatable.View style={styles.split2} animation="fadeIn" duration={1000}>
-                  <View style={[styles.bubble, styles.bubbleOut]}>
-                    <View style={[styles.balloon, { backgroundColor: "#983662" }]}>
-                      <Text style={styles.textround}>Des soft skills du tonnerre pour une dev volontaire !</Text>
-                      <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
-                        <Svg
-                          style={styles.arrowRight}
-                          width={moderateScale(15.5, 0.6)}
-                          height={moderateScale(17.5, 0.6)}
-                          viewBox="32.485 17.5 15.515 17.5"
-                          enable-background="new 32.485 17.5 15.515 17.5"
-                        >
-                          <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#983662" x="0" y="0" />
-                        </Svg>
-                      </View>
-                    </View>
-                  </View>
-                  <Image source={require("../assets/avatar2.png")} style={styles.avatar} />
-                </Animatable.View>
-              )}
-              {avatarImage == "development" && (
-                <Animatable.View style={styles.split2} animation="fadeIn" duration={1000}>
-                  <View style={[styles.bubble, styles.bubbleOut]}>
-                    <View style={[styles.balloon, { backgroundColor: "#983662" }]}>
-                      <Text style={styles.textround}>Fan de React Native et React, très motivée !</Text>
-                      <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
-                        <Svg
-                          style={styles.arrowRight}
-                          width={moderateScale(15.5, 0.6)}
-                          height={moderateScale(17.5, 0.6)}
-                          viewBox="32.485 17.5 15.515 17.5"
-                          enable-background="new 32.485 17.5 15.515 17.5"
-                        >
-                          <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#983662" x="0" y="0" />
-                        </Svg>
-                      </View>
-                    </View>
-                  </View>
-                  <Image source={require("../assets/avatar3.png")} style={styles.avatar} />
-                </Animatable.View>
-              )}
-              {avatarImage == "excited" && (
-                <Animatable.View style={styles.split2} animation="fadeIn" duration={1000}>
-                  <View style={[styles.bubble, styles.bubbleOut]}>
-                    <View style={[styles.balloon, { backgroundColor: "#983662" }]}>
-                      <Text style={styles.textround}>Et un peu de gourmandise :P</Text>
-                      <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
-                        <Svg
-                          style={styles.arrowRight}
-                          width={moderateScale(15.5, 0.6)}
-                          height={moderateScale(17.5, 0.6)}
-                          viewBox="32.485 17.5 15.515 17.5"
-                          enable-background="new 32.485 17.5 15.515 17.5"
-                        >
-                          <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#983662" x="0" y="0" />
-                        </Svg>
-                      </View>
-                    </View>
-                  </View>
-                  <Image source={require("../assets/avatar4.png")} style={styles.avatar} />
-                </Animatable.View>
-              )}
-            </>
-          ) : (
-            <Text>Error</Text>
-          )}
-        </View>
-        <View style={styles.split}>
-          <Animatable.View style={styles.round} animation="shake" duration={7000} iterationCount="infinite">
-            <FontAwesome name="hotel" size={24} color="#F9FAF9" style={{ marginBottom: 10 }} />
-            <Text
-              style={styles.textround}
-              onPress={() => {
-                setAvatarImage("hospitality");
-              }}
-            >
-              7 années dans l'hôtellerie
-            </Text>
-          </Animatable.View>
-
-          {avatarImage ? (
-            <>
-              {avatarImage == "hospitality" && (
-                <View style={styles.round4}>
-                  <Text
-                    style={styles.textround}
-                    onPress={() => {
-                      setAvatarImage("hospitality");
-                    }}
-                  >
-                    Dont 5 {"\n"} dans la vente ;)
-                  </Text>
-                </View>
-              )}
-            </>
-          ) : (
-            <Text>Error</Text>
-          )}
-        </View>
-        <View style={styles.split2}>
-          {avatarImage ? (
-            <>
-              {avatarImage == "development" && (
-                <SocialIcon
-                  title="Mon GitHub !"
-                  button
-                  type="github-alt"
-                  style={styles.github}
-                  iconSize={13}
-                  iconStyle={styles.githubicon}
-                  fontStyle={styles.githubtext}
-                  onPress={() => {
-                    Linking.openURL("https://github.com/Mgxcx");
-                  }}
-                />
-              )}
-            </>
-          ) : (
-            <Text>Error</Text>
-          )}
-          <Animatable.View style={styles.round2} animation="tada" duration={2000} iterationCount="infinite">
-            <FontAwesome5 name="laptop-code" size={24} color="#F9FAF9" style={{ marginBottom: 15 }} />
-            <Text
-              style={styles.textround}
-              onPress={() => {
-                setAvatarImage("development");
-              }}
-            >
-              (Presque) 1 année de dév !
-            </Text>
-          </Animatable.View>
-        </View>
-        <Animatable.View style={styles.round3} animation="pulse" duration={800} iterationCount="infinite">
-          <FontAwesome5 name="coffee" size={24} color="#F9FAF9" style={{ marginBottom: 10 }} />
-          <Text
-            style={styles.textround}
-            onPress={() => {
-              setAvatarImage("excited");
-            }}
+          <GradientButton
+            style={styles.button}
+            textStyle={styles.buttontext}
+            gradientBegin="#3c6f75"
+            gradientEnd="#5ca784"
+            gradientDirection="diagonal"
+            height={43}
+            width={180}
+            radius={17}
+            impact
+            impactStyle="Light"
+            onPressAction={() => navigation.navigate("Expériences")}
           >
-            2 cafés par jour
-          </Text>
-        </Animatable.View> */}
+            Recherche par métier
+          </GradientButton>
+          <GradientButton
+            style={styles.button}
+            textStyle={styles.buttontext}
+            gradientBegin="#4b93a0"
+            gradientEnd="#3c6f75"
+            gradientDirection="diagonal"
+            height={43}
+            width={195}
+            radius={17}
+            impact
+            impactStyle="Light"
+            onPressAction={() => navigation.navigate("Loisirs")}
+          >
+            Recherche par passion
+          </GradientButton>
+          <GradientButton
+            style={styles.button}
+            textStyle={styles.buttontext}
+            gradientBegin="#3c6f75"
+            gradientEnd="#5ca784"
+            gradientDirection="diagonal"
+            height={43}
+            width={210}
+            radius={17}
+            impact
+            impactStyle="Light"
+            onPressAction={() => navigation.navigate("Formations")}
+          >
+            Recherche par formation
+          </GradientButton>
+          <View style={styles.lastbuttoncontainer}></View>
+          <Button style={styles.button2} labelStyle={styles.buttontext2}>
+            Recrutez-moi !
+          </Button>
+        </View>
       </ImageBackground>
     </KeyboardAvoidingView>
   );
@@ -216,155 +94,52 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
-    marginTop: 90,
+    paddingTop: 100,
+  },
+  lastbuttoncontainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   title: {
     textAlign: "center",
-    color: "#3c6f75",
+    color: "#4f8868",
     fontSize: 34,
     fontWeight: "700",
     marginBottom: 20,
   },
   text: {
     textAlign: "center",
-    color: "#3c6f75",
-    fontSize: 24,
+    color: "#4b93a0",
+    fontSize: 25,
     fontWeight: "600",
-  },
-  viewavatar: {
-    alignItems: "flex-end",
-    marginRight: 10,
-  },
-  split: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-  },
-  split2: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
-  },
-  round: {
-    width: 120,
-    height: 120,
-    alignSelf: "flex-start",
-    backgroundColor: "#3c6f75",
-    borderWidth: 2,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#3c6f75",
-    borderRadius: 60,
-    marginLeft: 50,
-  },
-  round2: {
-    marginTop: 10,
-    marginRight: 40,
-    width: 140,
-    height: 140,
-    backgroundColor: "#be406c",
-    borderWidth: 2,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#be406c",
-    borderRadius: 70,
-  },
-  round3: {
-    display: "flex",
-    marginTop: 45,
-    marginRight: 70,
-    width: 120,
-    height: 120,
-    alignSelf: "center",
-    backgroundColor: "#5ca784",
-    borderWidth: 2,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#5ca784",
-    borderRadius: 60,
-  },
-  round4: {
-    marginLeft: 60,
-    marginBottom: 40,
-    width: 120,
-    height: 50,
-    alignSelf: "flex-end",
-    backgroundColor: "#6dcaa4",
-    borderWidth: 2,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#6dcaa4",
-    borderRadius: 20,
-  },
-  textround: {
-    textAlign: "center",
-    fontSize: 14,
-    color: "#F9FAF9",
-  },
-  avatar: {
-    marginTop: 30,
-    width: 120,
-    height: 120,
+    marginBottom: 45,
   },
   image: {
     alignSelf: "center",
     height: "100%",
     width: "100%",
   },
-  github: {
-    alignSelf: "flex-start",
-    height: 40,
-    width: 150,
-    backgroundColor: "#6dcaa4",
-    marginTop: 60,
-    marginRight: 30,
+  button: {
+    marginBottom: 15,
   },
-  githubtext: {
-    fontSize: 13,
+  buttontext: {
+    fontSize: 14,
+    textAlign: "center",
   },
-  bubble: {
-    marginTop: 40,
-    marginVertical: moderateScale(7, 2),
-    width: 180,
-    height: 80,
+  button2: {
+    borderRadius: 17,
+    borderWidth: 2,
+    borderColor: "white",
+    backgroundColor: "transparent",
+    marginBottom: 30,
   },
-  bubbleIn: {
-    marginLeft: 10,
-  },
-  balloon: {
-    maxWidth: moderateScale(250, 2),
-    paddingHorizontal: moderateScale(10, 2),
-    paddingTop: moderateScale(5, 2),
-    paddingBottom: moderateScale(7, 2),
-    borderRadius: 20,
-  },
-  arrowContainer: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: -1,
-    flex: 1,
-  },
-  arrowLeftContainer: {
-    justifyContent: "flex-end",
-    alignItems: "flex-start",
-  },
-
-  arrowRightContainer: {
-    justifyContent: "flex-end",
-    alignItems: "flex-end",
-  },
-
-  arrowLeft: {
-    left: moderateScale(-6, 0.5),
-  },
-
-  arrowRight: {
-    right: moderateScale(-6, 0.5),
+  buttontext2: {
+    fontSize: 11,
+    color: "white",
+    textAlign: "center",
   },
 });
 
