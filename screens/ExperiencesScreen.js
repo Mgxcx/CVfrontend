@@ -49,7 +49,7 @@ const ExperiencesScreen = () => {
         "Plan d’actions\nRéalisation de sites web et de flyers\nGestion des sites distributeurs et de l’e-réputation\nGestion de la centrale de réservations\nDémarchage\nRéférencement\nGestion des promotions et tarifs\nGestion de l’établissement",
       icon: require("../assets/avatar.png"),
       lineColor: "#5ca784",
-      imageUrl: "https://res.cloudinary.com/drchl4shw/image/upload/v1613578630/logo_leckod.png",
+      imageUrl: "https://res.cloudinary.com/drchl4shw/image/upload/v1614009054/logo_leckod_wk1s13_c13o9i.png",
     },
     {
       time: "Août 2014 \nSept. 2013",
@@ -108,7 +108,7 @@ const ExperiencesScreen = () => {
         style={styles.list}
         data={data}
         circleSize={32}
-        circleColor="#be406c"
+        circleColor="#5ca784"
         lineColor="#3c6f75"
         timeContainerStyle={styles.datecontainer}
         timeStyle={styles.date}
