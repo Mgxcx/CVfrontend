@@ -19,7 +19,7 @@ import { View, StyleSheet, Text } from "react-native";
 
 import ProfileScreen from "./screens/ProfileScreen";
 import ExperiencesScreen from "./screens/ExperiencesScreen";
-import CoursesScreen from "./screens/CoursesScreen";
+import CoursesScreenList from "./screens/CoursesScreenList";
 import StackScreen from "./screens/StackScreen";
 import HobbiesScreen from "./screens/HobbiesScreen";
 
@@ -79,7 +79,7 @@ const TabNavigator = () => {
       <Tab.Screen name="Profil" component={ProfileScreen} />
       <Tab.Screen name="Expériences" component={ExperiencesScreen} />
       <Tab.Screen name="Stack" component={StackScreen} />
-      <Tab.Screen name="Formations" component={CoursesScreen} />
+      <Tab.Screen name="Formations" component={CoursesScreenList} />
       <Tab.Screen name="Loisirs" component={HobbiesScreen} />
     </Tab.Navigator>
   );
