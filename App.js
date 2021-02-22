@@ -90,16 +90,16 @@ const CustomDrawerContent = () => {
     <View style={styles.container}>
       <Avatar.Image size={122} source={require("./assets/profile2.jpeg")} style={styles.avatar} />
       <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
-        <MaterialIcons name="auto-fix-high" size={18} color="#be406c" /> Perfectionniste
+        <MaterialIcons name="auto-fix-high" size={18} color="#3c6f75" /> Perfectionniste
       </Chip>
       <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
-        <FontAwesome5 name="hand-holding-heart" size={18} color="#be406c" /> Empathique
+        <FontAwesome5 name="hand-holding-heart" size={18} color="#3c6f75" /> Empathique
       </Chip>
       <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
-        <FontAwesome5 name="autoprefixer" size={18} color="#be406c" /> Rigoureuse
+        <FontAwesome5 name="autoprefixer" size={18} color="#3c6f75" /> Rigoureuse
       </Chip>
       <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
-        <FontAwesome5 name="paint-brush" size={18} color="#be406c" /> Créative
+        <FontAwesome5 name="paint-brush" size={18} color="#3c6f75" /> Créative
       </Chip>
     </View>
   );
@@ -121,9 +121,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "#C7F7E7",
+    paddingTop: 130,
   },
   avatar: {
-    marginTop: 80,
     marginBottom: 20,
   },
   chip: {
