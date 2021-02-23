@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, KeyboardAvoidingView, ScrollView, StyleSheet, Text, Image } from "react-native";
+import { View, KeyboardAvoidingView, ScrollView, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 // import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 import { Card } from "react-native-shadow-cards";
+import { connect } from "react-redux";
 
-const CoursesScreenList = () => {
+const CoursesScreenList = ({ navigation, onSubmitCoursePosition }) => {
   let courses = [
     {
       image: require("../assets/lacapsulebootcamp.png"),
@@ -34,29 +35,33 @@ const CoursesScreenList = () => {
     <ScrollView>
       <View style={styles.container}>
         {courses.map((course, i) => (
-          <Card style={styles.card}>
-            <Image source={course.image} style={styles.image} />
-            <Text style={styles.title}>{course.title}</Text>
-            <Text style={styles.text}>{course.name}</Text>
-            <Text style={styles.date}>{course.date}</Text>
-          </Card>
-          // <Card key={i}>
-          //   <Card.Content>
-          //     <Title>{course.title}</Title>
-          //     <Paragraph>{course.name}</Paragraph>
-          //     <Paragraph>{course.date}</Paragraph>
-          //   </Card.Content>
-          //   <Card.Cover source={course.image} />
-          //   <Card.Actions>
-          //     <Button>Cancel</Button>
-          //     <Button>Ok</Button>
-          //   </Card.Actions>
-          // </Card>
+          <TouchableOpacity
+            key={i}
+            onPress={() => {
+              navigation.navigate("CoursesScreenDetails");
+              onSubmitCoursePosition(i);
+            }}
+          >
+            <Card style={styles.card}>
+              <Image source={course.image} style={styles.image} />
+              <Text style={styles.title}>{course.title}</Text>
+              <Text style={styles.text}>{course.name}</Text>
+              <Text style={styles.date}>{course.date}</Text>
+            </Card>
+          </TouchableOpacity>
         ))}
       </View>
     </ScrollView>
   );
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onSubmitCoursePosition: function (courseposition) {
+      dispatch({ type: "saveCoursePosition", courseposition });
+    },
+  };
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -102,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CoursesScreenList;
+export default connect(null, mapDispatchToProps)(CoursesScreenList);

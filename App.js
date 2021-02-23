@@ -3,6 +3,7 @@ import { LogBox } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createStackNavigator } from "@react-navigation/stack";
 import {
   FontAwesome,
   MaterialIcons,
@@ -20,14 +21,22 @@ import { View, StyleSheet, Text } from "react-native";
 import ProfileScreen from "./screens/ProfileScreen";
 import ExperiencesScreen from "./screens/ExperiencesScreen";
 import CoursesScreenList from "./screens/CoursesScreenList";
+import CoursesScreenDetails from "./screens/CoursesScreenDetails";
 import StackScreen from "./screens/StackScreen";
 import HobbiesScreen from "./screens/HobbiesScreen";
 
+import { Provider } from "react-redux";
+import { createStore, combineReducers } from "redux";
+
+import courseposition from "./reducers/courseposition.reducer";
+
+const store = createStore(combineReducers({ courseposition }));
+
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 LogBox.ignoreAllLogs();
-
-const Tab = createMaterialBottomTabNavigator();
 
 const TabNavigator = () => {
   return (
@@ -79,9 +88,18 @@ const TabNavigator = () => {
       <Tab.Screen name="Profil" component={ProfileScreen} />
       <Tab.Screen name="Expériences" component={ExperiencesScreen} />
       <Tab.Screen name="Stack" component={StackScreen} />
-      <Tab.Screen name="Formations" component={CoursesScreenList} />
+      <Tab.Screen name="Formations" component={CoursesStack} />
       <Tab.Screen name="Loisirs" component={HobbiesScreen} />
     </Tab.Navigator>
+  );
+};
+
+const CoursesStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="CoursesScreenList" component={CoursesScreenList} />
+      <Stack.Screen name="CoursesScreenDetails" component={CoursesScreenDetails} />
+    </Stack.Navigator>
   );
 };
 
@@ -107,11 +125,13 @@ const CustomDrawerContent = () => {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props} />}>
-        <Drawer.Screen name="Tab" component={TabNavigator} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props} />}>
+          <Drawer.Screen name="Tab" component={TabNavigator} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
