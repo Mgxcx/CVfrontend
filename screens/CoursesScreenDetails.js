@@ -1,37 +1,13 @@
-import React, { useState, useCallback } from "react";
-import { View, StyleSheet, Text, Image, FlatList } from "react-native";
+import React, { useState, useCallback, useRef } from "react";
+import { View, StyleSheet, Text, Image, FlatList, ImageBackground } from "react-native";
 import { Appbar } from "react-native-paper";
 import { Card } from "react-native-shadow-cards";
 import { AntDesign } from "@expo/vector-icons";
 import StepIndicator from "react-native-step-indicator";
 import { connect } from "react-redux";
-
-let courses = [
-  {
-    image: require("../assets/lacapsulebootcamp.png"),
-    title: "TITRE DÉVELOPPEUSE WEB ET MOBILE FULLSTACK JAVASCRIPT",
-    name: "La Capsule Academy",
-    date: "Septembre 2020 à Janvier 2021",
-  },
-  {
-    image: require("../assets/ucl.png"),
-    title: "MASTER AFFAIRES INTERNATIONALES TRILINGUES PARCOURS TOURISME",
-    name: "Université Catholique de Lille",
-    date: "Septembre 2014 à Septembre 2016",
-  },
-  {
-    image: require("../assets/umlv.svg.png"),
-    title: "LICENCE PROFESSIONNELLE TOURISME ET NOUVELLES TECHNOLOGIES",
-    name: "Université Paris-Est Marne-la-Vallée",
-    date: "Septembre 2013 à Septembre 2014",
-  },
-  {
-    image: require("../assets/umlv.svg.png"),
-    title: "LICENCE EN LANGUES ÉTRANGÈRES APPLIQUÉES",
-    name: "Université Paris-Est Marne-la-Vallée",
-    date: "Septembre 2011 à Juin 2013",
-  },
-];
+import { SharedElement } from "react-navigation-shared-element";
+import * as Animatable from "react-native-animatable";
+import { Entypo } from "@expo/vector-icons";
 
 let coursesDetails = [
   {
@@ -50,17 +26,17 @@ let coursesDetails = [
       "Maîtrise de la mise en place et du fonctionnement d’une base de données.\nTravail avec MongoDB: création d'une base de données non relationnelle et écriture de requêtes NoSQL pour réaliser des opérations CRUD.\nMaîtrise des différences entre clés étrangères et sous-documents.",
   },
   {
-    title: "Redux, React et React Native",
+    title: "React, React Native\net Redux",
     body:
-      "Apprentissage de la librairie React : apport de fluidité aux sites et réactivité quasi-instantanée !\nApprentissage des applications mobiles React Native : déploiement d'une application sur Android ou iOS, découverte des composants React Native clé en main !\nUtilisation des fonctionnalités natives de l'appareil: caméra ou géolocalisation, et intégration de l’intelligence artificielle via un webservice.\nDécouverte du potentiel du temps réel via la librairie socket.io et l'implémentation d’un chat.\nApprentissage de Redux : une bibliothèque qui optimise les échanges de données dans des applications React et React Native.",
+      "Apprentissage de React : fluidité des sites et réactivité!\nApprentissage de React Native : déploiement d'une application moblie, découverte des composants.\nUtilisation des fonctionnalités natives: caméra ou géolocalisation, et intégration d’IA.\nDécouverte du temps réel via la librairie socket.io : implémentation d’un chat.\nApprentissage de Redux : optimise les échanges de données dans les applications React et React Native.",
   },
   {
-    title: "Création d'API et Architecture",
+    title: "Création d'API\net Architecture",
     body:
       "Construction d'un Back-end indépendant pour architecturer un projet de façon souple et évolutive.\nConception de l’API d’un Back-end en webservice.\nMise en place d'une architecture REST full et découpage de features en routes spécialisées.\nMaîtrise des notions de module et composants pour factoriser les fonctionnalités et gagner en efficacité.",
   },
   {
-    title: "Conception et Méthode Agile",
+    title: "Conception\net Méthode Agile",
     body:
       "Travail sur la conception de l'application :\ndéfinir l'UX / UI à l'aide du parcours utilisateur (user journeys, user stories, etc.),\net création des maquettes, du wireframe et du mockup des pages à l'aide d'outils (Google Drawings, Figma, et Whimsical).\nTravail sur le schéma de la base de données.\nTravail en sprints de développement en équipe.\nApprofondissement de la maîtrise de Git, et Github.",
   },
@@ -68,7 +44,7 @@ let coursesDetails = [
 
 let coursesDetails2 = [
   {
-    title: "Marketing, Digital et Logistique",
+    title: "Marketing,\nDigital et Logistique",
     body:
       "Stratégies digitales dans le tourisme.\nLogistique et transport touristique.\nMarketing et commercialisation du tourisme d’affaires.\nNégociations Internationales.\nStratégies et politiques touristiques.\nMarketing du tourisme et des services.\nCréation graphique dans le domaine du luxe.",
   },
@@ -88,7 +64,7 @@ let coursesDetails2 = [
       "Approfondissement des compétences dans la langue.\nCours de communication écrite mais aussi orale.\nApprentissage de lexique spécifique au tourisme. ",
   },
   {
-    title: "Géographie, cours culturels",
+    title: "Géographie,\ncours culturels",
     body:
       "Culture économique espagnole.\nApproche interculturelle du monde slave.\nApproche interculturelle du Moyen-Orient.\nApproche interculturelle d'Extrême Orient.\nGéographie du tourisme international.\nDéveloppement durable dans le domaine du tourisme.\nDestinations touristiques d’affaires et de luxe.\nTourisme d’affaires.\nLuxe et son environnement.",
   },
@@ -118,7 +94,7 @@ let coursesDetails3 = [
       "Innovation et tourisme.\nDémarche qualité dans le tourisme.\nCRM et tourisme.\nÉconomie du tourisme.\nCommunication touristique.",
   },
   {
-    title: "Compétences relationnelles",
+    title: "Compétences\nrelationnelles",
     body: "Nouvelles technologies de la communication.\nGestion des rssources humaines.\nConnaissance de l'entreprise.",
   },
 ];
@@ -158,25 +134,27 @@ const stepIndicatorStyles = {
   currentStepIndicatorSize: 30,
   separatorStrokeWidth: 3,
   currentStepStrokeWidth: 5,
-  stepStrokeCurrentColor: "#3c6f75",
-  separatorFinishedColor: "#3c6f75",
+  stepStrokeCurrentColor: "#4f8868",
+  separatorFinishedColor: "#4f8868",
   separatorUnFinishedColor: "#3c6f75",
-  stepIndicatorFinishedColor: "#3c6f75",
+  stepIndicatorFinishedColor: "#4f8868",
   stepIndicatorUnFinishedColor: "#3c6f75",
-  stepIndicatorCurrentColor: "#ffffff",
+  stepIndicatorCurrentColor: "#e8fcf6",
   stepIndicatorLabelFontSize: 10,
-  currentStepIndicatorLabelFontSize: 10,
-  stepIndicatorLabelCurrentColor: "#3c6f75",
-  stepIndicatorLabelFinishedColor: "#ffffff",
-  stepIndicatorLabelUnFinishedColor: "rgba(255,255,255,0.5)",
+  currentStepIndicatorLabelFontSize: 14,
+  stepIndicatorLabelCurrentColor: "#4f8868",
+  stepIndicatorLabelFinishedColor: "#e8fcf6",
+  stepIndicatorLabelUnFinishedColor: "#5ca784",
   labelColor: "#3c6f75",
-  labelSize: 11,
-  currentStepLabelColor: "#3c6f75",
+  labelSize: 14,
+  currentStepLabelColor: "#4f8868",
 };
 
-const CoursesScreenDetails = ({ navigation, courseposition }) => {
+const CoursesScreenDetails = ({ navigation, courseposition, route }) => {
+  const { course } = route.params;
   const [currentPage, setCurrentPage] = useState(0);
   const viewabilityConfig = { itemVisiblePercentThreshold: 40 };
+  const buttonRef = useRef();
 
   const renderPage = (coursesDetails) => {
     const item = coursesDetails.item;
@@ -227,52 +205,46 @@ const CoursesScreenDetails = ({ navigation, courseposition }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.container1}>
-        <Appbar.Header style={styles.topbar}>
+      <Appbar.Header style={styles.topbar}>
+        <Animatable.View
+          ref={buttonRef}
+          animation="fadeIn"
+          duration={600}
+          delay={300}
+          style={[StyleSheet.absoluteFillObject]}
+        >
           <AntDesign
             name="back"
             size={32}
             color="#e8fcf6"
             onPress={() => {
-              navigation.navigate("CoursesScreenList");
+              buttonRef.current.fadeOut(100).then(() => {
+                navigation.goBack();
+              });
             }}
             style={styles.backbutton}
           />
-          <Appbar.Content />
-        </Appbar.Header>
-
-        {courseposition == 0 && (
-          <Card style={styles.card} key={courseposition}>
-            <Image source={courses[0].image} style={styles.image} />
-            <Text style={styles.title}>{courses[0].title}</Text>
-            <Text style={styles.text}>{courses[0].name}</Text>
-            <Text style={styles.date}>{courses[0].date}</Text>
-          </Card>
-        )}
-        {courseposition == 1 && (
-          <Card style={styles.card} key={courseposition}>
-            <Image source={courses[1].image} style={styles.image} />
-            <Text style={styles.title}>{courses[1].title}</Text>
-            <Text style={styles.text}>{courses[1].name}</Text>
-            <Text style={styles.date}>{courses[1].date}</Text>
-          </Card>
-        )}
-        {courseposition == 2 && (
-          <Card style={styles.card} key={courseposition}>
-            <Image source={courses[2].image} style={styles.image} />
-            <Text style={styles.title}>{courses[2].title}</Text>
-            <Text style={styles.text}>{courses[2].name}</Text>
-            <Text style={styles.date}>{courses[2].date}</Text>
-          </Card>
-        )}
-        {courseposition == 3 && (
-          <Card style={styles.card} key={courseposition}>
-            <Image source={courses[3].image} style={styles.image} />
-            <Text style={styles.title}>{courses[3].title}</Text>
-            <Text style={styles.text}>{courses[3].name}</Text>
-            <Text style={styles.date}>{courses[3].date}</Text>
-          </Card>
-        )}
+        </Animatable.View>
+        <Appbar.Content />
+      </Appbar.Header>
+      <View style={styles.coursecontainer}>
+        <SharedElement id={`course.${course.image}`}>
+          <Image source={course.image} style={styles.image} />
+        </SharedElement>
+        <View style={styles.description}>
+          <SharedElement id={`course.${course.title}`}>
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+              <Entypo name={course.icon} size={22} color="#4f8868" style={styles.icon} />
+              <Text style={styles.title}>{course.title}</Text>
+            </View>
+          </SharedElement>
+          <SharedElement id={`course.${course.name}`}>
+            <Text style={styles.text}>{course.name}</Text>
+          </SharedElement>
+          <SharedElement id={`course.${course.date}`}>
+            <Text style={styles.date}>{course.date}</Text>
+          </SharedElement>
+        </View>
       </View>
 
       {courseposition == 0 && (
@@ -297,7 +269,7 @@ const CoursesScreenDetails = ({ navigation, courseposition }) => {
       )}
 
       {courseposition == 1 && (
-        <View style={styles.step2}>
+        <View style={styles.step}>
           <View style={styles.stepIndicator}>
             <StepIndicator
               customStyles={stepIndicatorStyles}
@@ -318,7 +290,7 @@ const CoursesScreenDetails = ({ navigation, courseposition }) => {
       )}
 
       {courseposition == 2 && (
-        <View style={styles.step3}>
+        <View style={styles.step}>
           <View style={styles.stepIndicator}>
             <StepIndicator
               customStyles={stepIndicatorStyles}
@@ -338,7 +310,7 @@ const CoursesScreenDetails = ({ navigation, courseposition }) => {
         </View>
       )}
       {courseposition == 3 && (
-        <View style={styles.step4}>
+        <View style={styles.step}>
           <View style={styles.stepIndicator}>
             <StepIndicator
               customStyles={stepIndicatorStyles}
@@ -369,92 +341,75 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#e8fcf6",
   },
-  container1: {
-    flex: 1,
-    backgroundColor: "#e8fcf6",
-    justifyContent: "flex-start",
+  coursecontainer: {
     alignItems: "center",
+    justifyContent: "flex-end",
   },
   topbar: {
     width: "100%",
     height: 100,
-    backgroundColor: "#64b893",
+    backgroundColor: "#3c6f75",
   },
   backbutton: {
     alignSelf: "flex-start",
     marginTop: 6,
+    marginLeft: 5,
   },
   card: {
-    marginTop: 45,
-    marginBottom: 10,
+    marginTop: 30,
+    marginBottom: 20,
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 30,
     backgroundColor: "#6dcaa4",
-    height: 210,
+    height: 260,
+  },
+  icon: {
+    marginRight: 5,
   },
   image: {
-    width: "100%",
-    height: 90,
+    width: 380,
+    height: 220,
+    borderRadius: 25,
+    marginTop: -72,
     marginBottom: 20,
-    borderRadius: 5,
-  },
-  step: {
-    justifyContent: "flex-end",
-    marginTop: 280,
-    flexDirection: "row",
-    height: 400,
-    marginLeft: 10,
-  },
-  step2: {
-    justifyContent: "flex-end",
-    marginTop: 280,
-    flexDirection: "row",
-    height: 400,
-    marginLeft: 10,
-  },
-  step3: {
-    justifyContent: "flex-end",
-    marginTop: 280,
-    flexDirection: "row",
-    height: 400,
-    marginLeft: 10,
-  },
-  step4: {
-    justifyContent: "flex-end",
-    marginTop: 280,
-    flexDirection: "row",
-    height: 400,
-    marginLeft: 10,
-  },
-  stepIndicator: {
-    marginVertical: 50,
-  },
-  flatlist: {
-    flexGrow: 1,
-    padding: 20,
-  },
-  descriptionFlatlist: {
-    width: 150,
   },
   item: {
     flex: 3,
     paddingVertical: 17,
   },
-  title2: {
-    flex: 1,
-    fontSize: 20,
-    color: "#3c6f75",
-    paddingVertical: 18,
-    fontWeight: "600",
-    textAlign: "center",
+  step: {
+    flexDirection: "row",
+    height: 360,
+    marginLeft: 10,
+    marginBottom: 20,
+  },
+  stepIndicator: {
+    marginTop: 10,
+    marginBottom: 50,
+  },
+  flatlist: {
+    flexGrow: 1,
+    paddingBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginBottom: 50,
+    marginTop: 0,
+  },
+  descriptionFlatlist: {
+    width: 150,
+  },
+  description: {
+    height: 70,
+    justifyContent: "flex-end",
   },
   body: {
     flex: 1,
-    fontSize: 15,
+    fontSize: 13,
     color: "#3c6f75",
     lineHeight: 24,
     marginRight: 8,
     textAlign: "center",
+    fontWeight: "500",
   },
   title: {
     textAlign: "center",
@@ -463,20 +418,59 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     fontSize: 14,
   },
+  title2: {
+    flex: 1,
+    fontSize: 17,
+    color: "#4f8868",
+    paddingVertical: 18,
+    fontWeight: "700",
+    textAlign: "center",
+  },
   text: {
     textAlign: "center",
     marginBottom: 5,
-    color: "#C7F7E7",
-    fontWeight: "900",
+    color: "#4f8868",
+    fontWeight: "800",
     fontSize: 14,
   },
   date: {
     textAlign: "center",
     marginBottom: 5,
-    color: "#e8fcf6",
+    color: "#4f8868",
     fontWeight: "600",
     fontSize: 11,
   },
 });
+
+CoursesScreenDetails.sharedElements = (route) => {
+  const { course } = route.params;
+  return [
+    {
+      id: `course.${course.id}.image`,
+      animation: "move",
+      resize: "clip",
+    },
+    {
+      id: `course.${course.id}.icon`,
+      animation: "move",
+      resize: "clip",
+    },
+    {
+      id: `course.${course.id}.title`,
+      animation: "move",
+      resize: "clip",
+    },
+    {
+      id: `course.${course.id}.name`,
+      animation: "move",
+      resize: "clip",
+    },
+    {
+      id: `course.${course.id}.date`,
+      animation: "move",
+      resize: "clip",
+    },
+  ];
+};
 
 export default connect(mapStateToProps, null)(CoursesScreenDetails);

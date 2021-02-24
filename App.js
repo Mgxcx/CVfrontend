@@ -3,7 +3,7 @@ import { LogBox } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createSharedElementStackNavigator } from "react-navigation-shared-element";
 import {
   FontAwesome,
   MaterialIcons,
@@ -33,7 +33,7 @@ import courseposition from "./reducers/courseposition.reducer";
 const store = createStore(combineReducers({ courseposition }));
 
 const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
+const Stack = createSharedElementStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 LogBox.ignoreAllLogs();
@@ -94,11 +94,22 @@ const TabNavigator = () => {
   );
 };
 
+const options = {
+  headerBackTitleVisible: false,
+  cardStyleInterpolator: ({ current: { progress } }) => {
+    return {
+      cardStyle: {
+        opacity: progress,
+      },
+    };
+  },
+};
+
 const CoursesStack = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator headerMode="none" initalRouteName="CoursesScreenList">
       <Stack.Screen name="CoursesScreenList" component={CoursesScreenList} />
-      <Stack.Screen name="CoursesScreenDetails" component={CoursesScreenDetails} />
+      <Stack.Screen name="CoursesScreenDetails" component={CoursesScreenDetails} options={() => options} />
     </Stack.Navigator>
   );
 };
