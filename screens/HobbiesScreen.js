@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { View, KeyboardAvoidingView, ScrollView, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import { Overlay } from "react-native-elements";
 import * as Animatable from "react-native-animatable";
 import RNMasonryScroll from "react-native-masonry-scrollview";
 import Image2 from "react-native-scalable-image";
 import { useResponsiveWidth } from "react-native-responsive-dimensions";
+import MapView, { Marker } from "react-native-maps";
 
 const { createAnimatableComponent } = Animatable;
 
@@ -87,7 +97,40 @@ const HobbiesScreen = () => {
         <ScrollView></ScrollView>
       </Overlay>
       <Overlay isVisible={overlayVisible2} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay2}>
-        <ScrollView></ScrollView>
+        <ScrollView>
+          <MapView style={styles.map}>
+            <Marker coordinate={{ latitude: 59.3251172, longitude: 18.0710935 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 45.4371908, longitude: 12.3345898 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 43.7698712, longitude: 11.2555757 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 41.8933203, longitude: 12.4829321 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 55.9533456, longitude: -3.1883749 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 56.9493977, longitude: 24.1051846 }} image={require("../assets/pin.png")} />
+            <Marker
+              coordinate={{ latitude: 16.2408636, longitude: -61.5334077 }}
+              image={require("../assets/pin.png")}
+            />
+            <Marker coordinate={{ latitude: 55.8609825, longitude: -4.2488787 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 31.6258257, longitude: -7.9891608 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 36.760462, longitude: 10.193117 }} image={require("../assets/pin.png")} />
+            <Marker
+              coordinate={{ latitude: 36.1672559, longitude: -115.1485163 }}
+              image={require("../assets/pin.png")}
+            />
+            <Marker
+              coordinate={{ latitude: 45.4972159, longitude: -73.6103642 }}
+              image={require("../assets/pin.png")}
+            />
+            <Marker
+              coordinate={{ latitude: 46.8259601, longitude: -71.2352226 }}
+              image={require("../assets/pin.png")}
+            />
+            <Marker coordinate={{ latitude: 42.4084817, longitude: 8.647919 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 50.8465573, longitude: 4.351697 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 50.938361, longitude: 6.959974 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 50.1106444, longitude: 8.6820917 }} image={require("../assets/pin.png")} />
+            <Marker coordinate={{ latitude: 49.6112768, longitude: 6.129799 }} image={require("../assets/pin.png")} />
+          </MapView>
+        </ScrollView>
       </Overlay>
       <Overlay isVisible={overlayVisible3} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay3}>
         <ScrollView></ScrollView>
@@ -106,6 +149,7 @@ const HobbiesScreen = () => {
                 animation={isHorizontal ? "fadeInRight" : "fadeInUp"}
                 delay={100 * imageIndex}
                 style={styles.imageContainer}
+                key={imageIndex}
               >
                 <Image2 source={{ uri: image }} {...imageProp} key={imageIndex} />
               </AnimatableView>
@@ -188,6 +232,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: "hidden",
     backgroundColor: "silver",
+  },
+  map: {
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
   evenColumnStyle: {},
   oddColumnStyleVertical: { marginTop: 60 },

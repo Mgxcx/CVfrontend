@@ -24,6 +24,7 @@
     "react-native-elements": "^3.2.0",
     "react-native-gesture-handler": "~1.8.0",
     "react-native-gradient-buttons": "^2.0.2",
+    "react-native-maps": "^0.27.1",
     "react-native-masonry-scrollview": "^0.0.2",
     "react-native-motion": "^1.0.5",
     "react-native-paper": "^4.7.1",
