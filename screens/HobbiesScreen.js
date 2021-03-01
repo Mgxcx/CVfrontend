@@ -94,17 +94,13 @@ const HobbiesScreen = () => {
         </TouchableOpacity>
       </View>
       <Overlay isVisible={overlayVisible} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay}>
-        <ScrollView>
-          <View style={styles.cookcontainer}>
-            <Text style={styles.textcat}>
-              En pleine lecture de "Sa Majesté des Chats" de Werber, accompagnée de mes boules de poils :
-            </Text>
-            <Image source={require("../assets/lyla.jpeg")} style={styles.catimage} />
-            <Image source={require("../assets/ruby.png")} style={styles.catimage} />
-            <Image source={require("../assets/lylaragnar.png")} style={styles.catimage} />
-            <Image source={require("../assets/lylarubyragnar.png")} style={styles.catimage} />
-          </View>
-        </ScrollView>
+        <View style={styles.container2}>
+          <Text style={styles.textcat}>
+            En pleine lecture du livre {"\n"}"Sa Majesté des Chats" de Werber,{"\n"}car je suis folle de mes boules de
+            poils :
+          </Text>
+          <Image source={require("../assets/lylarubyragnar.png")} style={styles.catimage} />
+        </View>
       </Overlay>
       <Overlay isVisible={overlayVisible2} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay2}>
         <ScrollView>
@@ -143,7 +139,7 @@ const HobbiesScreen = () => {
         </ScrollView>
       </Overlay>
       <Overlay isVisible={overlayVisible3} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay3}>
-        <View style={styles.cookcontainer}>
+        <View style={styles.container2}>
           <Text style={styles.textcook}>Les pêchés mignons que j'aime cuisiner :</Text>
           <Image source={require("../assets/tartiflette.png")} style={styles.cookimage} resizeMode="stretch" />
           <Image source={require("../assets/wokcrevettesriz.jpg")} style={styles.cookimage} />
@@ -186,6 +182,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  container2: {
+    width: "100%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
   firstgif: {
     marginTop: 20,
     borderColor: "#3c6f75",
@@ -214,12 +216,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
   },
-  cookcontainer: {
-    width: "100%",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
+
   textcook: {
     color: "#4f8868",
     fontSize: 18,
@@ -263,7 +260,13 @@ const styles = StyleSheet.create({
     height: 350,
     width: 300,
     margin: 5,
-    borderRadius: 20,
+    borderRadius: 40,
+  },
+  catimage2: {
+    height: 155,
+    width: 155,
+    margin: 5,
+    borderRadius: 100,
   },
   overlay: {
     backgroundColor: "#FFFEFA",
