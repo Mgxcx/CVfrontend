@@ -20,6 +20,10 @@ Projet d'application "CV" React Native en cours. Commencé le samedi 13 Février
 ![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1614286182/CV17_lqyxoy.png)
 ![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1614364042/CV17_pv570u.png)
 ![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1614364042/CV18_bprtqy.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1614636694/CV19_io5gva.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1614636694/CV20_cxaocg.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1614636695/CV21_u5bcwa.png)
+![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1614636695/CV22_hv4jg6.png)
 
 
 
