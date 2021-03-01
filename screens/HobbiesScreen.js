@@ -73,7 +73,7 @@ const HobbiesScreen = () => {
       <View style={{ flexDirection: "row" }}>
         <TouchableOpacity onPress={toggleOverlay}>
           <View style={styles.firstgif}>
-            <Image source={require("../assets/cat4.gif")} style={styles.gif} />
+            <Image source={require("../assets/cat.gif")} style={styles.gif} />
           </View>
         </TouchableOpacity>
 
@@ -94,7 +94,17 @@ const HobbiesScreen = () => {
         </TouchableOpacity>
       </View>
       <Overlay isVisible={overlayVisible} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay}>
-        <ScrollView></ScrollView>
+        <ScrollView>
+          <View style={styles.cookcontainer}>
+            <Text style={styles.textcat}>
+              En pleine lecture de "Sa Majesté des Chats" de Werber, accompagnée de mes boules de poils :
+            </Text>
+            <Image source={require("../assets/lyla.jpeg")} style={styles.catimage} />
+            <Image source={require("../assets/ruby.png")} style={styles.catimage} />
+            <Image source={require("../assets/lylaragnar.png")} style={styles.catimage} />
+            <Image source={require("../assets/lylarubyragnar.png")} style={styles.catimage} />
+          </View>
+        </ScrollView>
       </Overlay>
       <Overlay isVisible={overlayVisible2} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay2}>
         <ScrollView>
@@ -133,7 +143,15 @@ const HobbiesScreen = () => {
         </ScrollView>
       </Overlay>
       <Overlay isVisible={overlayVisible3} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay3}>
-        <ScrollView></ScrollView>
+        <View style={styles.cookcontainer}>
+          <Text style={styles.textcook}>Les pêchés mignons que j'aime cuisiner :</Text>
+          <Image source={require("../assets/tartiflette.png")} style={styles.cookimage} resizeMode="stretch" />
+          <Image source={require("../assets/wokcrevettesriz.jpg")} style={styles.cookimage} />
+          <Image source={require("../assets/tajinedepoulet.jpg")} style={styles.cookimage} />
+          <Image source={require("../assets/makrout.jpg")} style={styles.cookimage} resizeMode="stretch" />
+          <Image source={require("../assets/tartefraises.jpg")} style={styles.cookimage} resizeMode="stretch" />
+          <Image source={require("../assets/oeufmolletfrit.jpeg")} style={styles.cookimage} />
+        </View>
       </Overlay>
       <Overlay isVisible={overlayVisible4} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay4}>
         <RNMasonryScroll
@@ -196,6 +214,26 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
   },
+  cookcontainer: {
+    width: "100%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
+  textcook: {
+    color: "#4f8868",
+    fontSize: 18,
+    fontWeight: "800",
+    marginBottom: 20,
+  },
+  textcat: {
+    textAlign: "center",
+    color: "#3c6f75",
+    fontSize: 18,
+    fontWeight: "800",
+    marginBottom: 20,
+    marginTop: 30,
+  },
   gif: {
     height: 150,
     width: 150,
@@ -214,6 +252,17 @@ const styles = StyleSheet.create({
   gif4: {
     height: 150,
     width: 150,
+    borderRadius: 20,
+  },
+  cookimage: {
+    height: 140,
+    width: 178,
+    margin: 8,
+  },
+  catimage: {
+    height: 350,
+    width: 300,
+    margin: 5,
     borderRadius: 20,
   },
   overlay: {
