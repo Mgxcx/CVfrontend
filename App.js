@@ -25,8 +25,10 @@ import CoursesScreenDetails from "./screens/CoursesScreenDetails";
 import StackScreen from "./screens/StackScreen";
 import HobbiesScreen from "./screens/HobbiesScreen";
 
-import { Provider } from "react-redux";
+import { Provider as StoreProvider } from "react-redux";
 import { createStore, combineReducers } from "redux";
+
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
 import courseposition from "./reducers/courseposition.reducer";
 
@@ -37,6 +39,22 @@ const Stack = createSharedElementStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 LogBox.ignoreAllLogs();
+
+//Personnalisation du thème React Native Paper
+const theme = {
+  ...DefaultTheme,
+  roundness: 4,
+  colors: {
+    ...DefaultTheme.colors,
+    disabled: "#5ca784",
+    placeholder: "#5ca784",
+    text: "#5ca784",
+    background: "#e8fcf6",
+    surface: "#5ca784",
+    primary: "#5ca784",
+    accent: "#5ca784",
+  },
+};
 
 const TabNavigator = () => {
   return (
@@ -136,13 +154,15 @@ const CustomDrawerContent = () => {
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props} />}>
-          <Drawer.Screen name="Tab" component={TabNavigator} />
-        </Drawer.Navigator>
-      </NavigationContainer>
-    </Provider>
+    <StoreProvider store={store}>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <Drawer.Navigator drawerContent={(props) => <CustomDrawerContent {...props} />}>
+            <Drawer.Screen name="Tab" component={TabNavigator} />
+          </Drawer.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+    </StoreProvider>
   );
 }
 
