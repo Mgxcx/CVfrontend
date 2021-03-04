@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  KeyboardAvoidingView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  Linking,
-} from "react-native";
+import { View, KeyboardAvoidingView, ScrollView, StyleSheet, Text, ImageBackground } from "react-native";
 import { Overlay } from "react-native-elements";
 import { Button, FAB, TextInput } from "react-native-paper";
 import GradientButton from "react-native-gradient-buttons";
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import Svg, { Path } from "react-native-svg";
 import { moderateScale } from "react-native-size-matters";
+import { Avatar, Badge } from "react-native-paper";
+import AnimatedHideView from "react-native-animated-hide-view";
 import socketIOClient from "socket.io-client";
-import { Avatar } from "react-native-paper";
 
 const urlBack = "http://192.168.1.17:3000";
 const socket = socketIOClient(urlBack);
@@ -33,6 +24,9 @@ const ProfileScreen = ({ navigation }) => {
   const toggleOverlay2 = () => {
     setOverlayVisible2(!overlayVisible2);
   };
+
+  //gestion du badge de notification
+  const [badgeVisible, setBadgeVisible] = useState(true);
 
   //Gestion des messages du chat
   const [currentMessage, setCurrentMessage] = useState(null);
@@ -115,128 +109,134 @@ const ProfileScreen = ({ navigation }) => {
     });
   }, [listChatMessages]);
 
+  // gestion de l'affichage du reminder une fois que la notification a été cliquée
+  const [isReminderVisible, setIsReminderVisible] = useState(true);
+  if (badgeVisible == false) {
+    setTimeout(() => {
+      setIsReminderVisible(false);
+    }, 2000);
+  }
+
   return (
     <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
       <ImageBackground source={require("../assets/landscape1.jpg")} style={styles.image}>
         <View style={styles.container}>
-          <Text style={styles.title}>Margaux Chevreux</Text>
-          <Text style={styles.text}>Votre future {"\n"}développeuse</Text>
-          <GradientButton
-            style={styles.button}
-            textStyle={styles.buttontext}
-            gradientBegin="#3c6f75"
-            gradientEnd="#5ca784"
-            gradientDirection="diagonal"
-            height={43}
-            width={180}
-            radius={17}
-            impact
-            impactStyle="Light"
-            onPressAction={() => navigation.navigate("Expériences")}
-          >
-            Recherche par métier
-          </GradientButton>
-          <GradientButton
-            style={styles.button}
-            textStyle={styles.buttontext}
-            gradientBegin="#4b93a0"
-            gradientEnd="#3c6f75"
-            gradientDirection="diagonal"
-            height={43}
-            width={195}
-            radius={17}
-            impact
-            impactStyle="Light"
-            onPressAction={() => navigation.navigate("Loisirs")}
-          >
-            Recherche par passion
-          </GradientButton>
-          <GradientButton
-            style={styles.button}
-            textStyle={styles.buttontext}
-            gradientBegin="#3c6f75"
-            gradientEnd="#5ca784"
-            gradientDirection="diagonal"
-            height={43}
-            width={210}
-            radius={17}
-            impact
-            impactStyle="Light"
-            onPressAction={() => navigation.navigate("Formations")}
-          >
-            Recherche par formation
-          </GradientButton>
-          <FAB.Group
-            open={open}
-            icon={open ? "calendar-account" : "plus"}
-            actions={[
-              {
-                icon: "plus",
-                color: "#4f8868",
-                style: { backgroundColor: "#e8fcf6" },
-                onPress: () => console.log("Pressed add"),
-              },
-              {
-                icon: "email-outline",
-                color: "#4f8868",
-                style: { backgroundColor: "#e8fcf6" },
-                onPress: () => console.log("Pressed star"),
-              },
-              {
-                icon: "chat-processing-outline",
-                color: "#4f8868",
-                style: { backgroundColor: "#e8fcf6" },
-                onPress: toggleOverlay2,
-              },
-              {
-                icon: "bell-outline",
-                color: "#4f8868",
-                style: { backgroundColor: "#e8fcf6" },
-                onPress: () => console.log("Pressed notifications"),
-                small: false,
-              },
-            ]}
-            onStateChange={onStateChange}
-            onPress={() => {
-              if (open) {
-                // do something if the speed dial is open
-              }
-            }}
-            fabStyle={styles.fab}
-            style={styles.fab2}
-          />
+          <View style={styles.badgecontainer}>
+            <Badge visible={badgeVisible} style={styles.badge}>
+              1
+            </Badge>
+          </View>
+          <View style={styles.fabcontainer}>
+            {badgeVisible == false && (
+              <>
+                <AnimatedHideView visible={isReminderVisible}>
+                  <View style={styles.reminder}>
+                    <View style={[styles.bubble, styles.bubbleOut]}>
+                      <View style={[styles.balloon, { backgroundColor: "#3c6f75" }]}>
+                        <Text style={styles.textreminder}>N'oublie pas de recontacter Margaux !</Text>
+                        <View style={[styles.arrowContainer, styles.arrowRightContainer]}>
+                          <Svg
+                            style={styles.arrowRight}
+                            width={moderateScale(15.5, 0.6)}
+                            height={moderateScale(17.5, 0.6)}
+                            viewBox="32.485 17.5 15.515 17.5"
+                            enable-background="new 32.485 17.5 15.515 17.5"
+                          >
+                            <Path d="M48,35c-7-4-6-8.75-6-17.5C28,17.5,29,35,48,35z" fill="#3c6f75" x="0" y="0" />
+                          </Svg>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </AnimatedHideView>
+              </>
+            )}
+
+            <FAB style={styles.fab} small icon="bell-outline" onPress={() => setBadgeVisible(false)} />
+          </View>
+          <View style={styles.container1}>
+            <Text style={styles.title}>Margaux Chevreux</Text>
+            <Text style={styles.text}>Votre future {"\n"}développeuse</Text>
+            <GradientButton
+              style={styles.button}
+              textStyle={styles.buttontext}
+              gradientBegin="#3c6f75"
+              gradientEnd="#5ca784"
+              gradientDirection="diagonal"
+              height={43}
+              width={180}
+              radius={17}
+              impact
+              impactStyle="Light"
+              onPressAction={() => navigation.navigate("Expériences")}
+            >
+              Recherche par métier
+            </GradientButton>
+            <GradientButton
+              style={styles.button}
+              textStyle={styles.buttontext}
+              gradientBegin="#4b93a0"
+              gradientEnd="#3c6f75"
+              gradientDirection="diagonal"
+              height={43}
+              width={195}
+              radius={17}
+              impact
+              impactStyle="Light"
+              onPressAction={() => navigation.navigate("Loisirs")}
+            >
+              Recherche par passion
+            </GradientButton>
+            <GradientButton
+              style={styles.button}
+              textStyle={styles.buttontext}
+              gradientBegin="#3c6f75"
+              gradientEnd="#5ca784"
+              gradientDirection="diagonal"
+              height={43}
+              width={210}
+              radius={17}
+              impact
+              impactStyle="Light"
+              onPressAction={() => navigation.navigate("Formations")}
+            >
+              Recherche par formation
+            </GradientButton>
+          </View>
+
           <View style={styles.lastbuttoncontainer}>
-            <Button style={styles.button2} labelStyle={styles.buttontext2}>
+            <Button style={styles.button2} labelStyle={styles.buttontext2} onPress={toggleOverlay2}>
               Recrutez-moi !
             </Button>
           </View>
+
+          <Overlay isVisible={overlayVisible2} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay2}>
+            <View style={{ flex: 1 }}>
+              <ScrollView style={{ flex: 1 }}>{chatMessages}</ScrollView>
+              <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
+                <View style={styles.inputandsend}>
+                  <TextInput
+                    label="Start typing..."
+                    value={currentMessage}
+                    onChangeText={(e) => setCurrentMessage(e)}
+                    style={styles.input}
+                    mode="outlined"
+                  />
+                  <FontAwesome
+                    name="send-o"
+                    size={27}
+                    color="#4f8868"
+                    onPress={() => {
+                      socket.emit("sendMessage", { currentMessage, username });
+                      setCurrentMessage("");
+                    }}
+                    style={styles.send}
+                  />
+                </View>
+              </KeyboardAvoidingView>
+            </View>
+          </Overlay>
         </View>
-        <Overlay isVisible={overlayVisible2} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay2}>
-          <View style={{ flex: 1 }}>
-            <ScrollView style={{ flex: 1 }}>{chatMessages}</ScrollView>
-            <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
-              <View style={styles.inputandsend}>
-                <TextInput
-                  label="Start typing..."
-                  value={currentMessage}
-                  onChangeText={(e) => setCurrentMessage(e)}
-                  style={styles.input}
-                  mode="outlined"
-                />
-                <FontAwesome
-                  name="send-o"
-                  size={27}
-                  color="#4f8868"
-                  onPress={() => {
-                    socket.emit("sendMessage", { currentMessage, username });
-                    setCurrentMessage("");
-                  }}
-                  style={styles.send}
-                />
-              </View>
-            </KeyboardAvoidingView>
-          </View>
-        </Overlay>
       </ImageBackground>
     </KeyboardAvoidingView>
   );
@@ -245,14 +245,37 @@ const ProfileScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+  },
+  badgecontainer: {
+    paddingTop: 25,
+    marginBottom: -5,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+    height: "7%",
+    width: "100%",
+  },
+  fabcontainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+    height: "7%",
+    width: "100%",
+  },
+  container1: {
+    paddingTop: 20,
+    justifyContent: "flex-start",
     alignItems: "center",
-    paddingTop: 100,
+    height: "75%",
   },
   lastbuttoncontainer: {
-    flex: 1,
-    justifyContent: "flex-end",
     alignItems: "center",
+    height: "10%",
+    width: "100%",
+  },
+  badge: {
+    marginRight: 4,
+    alignSelf: "flex-end",
   },
   title: {
     textAlign: "center",
@@ -294,6 +317,7 @@ const styles = StyleSheet.create({
   },
   fab: {
     backgroundColor: "#6dcaa4",
+    marginRight: 10,
   },
   overlay: {
     backgroundColor: "#e8fcf6",
@@ -386,6 +410,16 @@ const styles = StyleSheet.create({
     color: "#e8fcf6",
     textAlign: "left",
     padding: 5,
+  },
+  reminder: {
+    flexDirection: "row",
+    marginTop: -10,
+  },
+  textreminder: {
+    fontSize: 9,
+    color: "white",
+    textAlign: "center",
+    fontWeight: "900",
   },
   avatar1: {
     alignSelf: "flex-end",

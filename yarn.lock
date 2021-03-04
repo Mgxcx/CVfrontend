@@ -5403,6 +5403,11 @@ react-native-animatable@^1.3.3:
   dependencies:
     prop-types "^15.7.2"
 
+react-native-animated-hide-view@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-animated-hide-view/-/react-native-animated-hide-view-1.0.0.tgz#29fcbc070e17f742ad95a7eb662fa07a0d885256"
+  integrity sha1-Kfy8Bw4X90KtlafrZi+geg2IUlY=
+
 react-native-bouncing-ball@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/react-native-bouncing-ball/-/react-native-bouncing-ball-0.1.1.tgz#ed0fa4a9f107586110948dc6667c9bbe2a587faf"
