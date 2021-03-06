@@ -21,25 +21,25 @@ const { createAnimatableComponent } = Animatable;
 const AnimatableView = createAnimatableComponent(View);
 
 const images = [
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272885/DSC_0276_qwnf6v.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272888/DSC_0512_zjvdiu.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272885/DSC_0685_selab8.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272887/DSC_0097_jjinmi.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956485/DSC_0276_pykkk9.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956486/DSC_0512_hoq6qf.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956487/DSC_0685_xvnhd7.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956484/DSC_0097_zixyon.jpg",
   "https://res.cloudinary.com/drchl4shw/image/upload/v1614272884/IMG_1339_kf1vv1.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272884/DSC_0081_hk8xyx.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272885/DSC_0827_ujntly.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614275877/DSC_0436_r6chdx.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956484/DSC_0081_p3krcl.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956505/DSC_0827_vikicq.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956485/DSC_0436_owjbqp.jpg",
   "https://res.cloudinary.com/drchl4shw/image/upload/v1614272884/IMG_5231_wdfaoq.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272883/DSC_0786_ehmgtd.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956488/DSC_0786_pvynwc.jpg",
   "https://res.cloudinary.com/drchl4shw/image/upload/v1614272886/IMG_5561_scu3ns.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272883/DSC_0819_j5yqko.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272883/DSC_0107_sngzwi.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272883/DSC_0093_cychab.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272883/DSC_0176_fqibas.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272887/DSC_0768_cpkwr6.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614272883/DSC_0656_hisdbq.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614275874/DSC_0917_lhkjex.jpg",
-  "https://res.cloudinary.com/drchl4shw/image/upload/v1614275876/DSC_0632_nggxct.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956505/DSC_0819_xhjlan.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956484/DSC_0107_zyc6bl.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956484/DSC_0093_lol3jh.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956484/DSC_0176_pvxhj5.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956488/DSC_0768_x6el50.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956487/DSC_0656_iox6fs.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956505/DSC_0917_jcwhsn.jpg",
+  "https://res.cloudinary.com/drchl4shw/image/upload/v1614956487/DSC_0632_de9gnv.jpg",
 ];
 
 const HobbiesScreen = () => {
@@ -102,7 +102,7 @@ const HobbiesScreen = () => {
           <Image source={require("../assets/lylarubyragnar.png")} style={styles.catimage} />
         </View>
       </Overlay>
-      <Overlay isVisible={overlayVisible2} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay2}>
+      <Overlay isVisible={overlayVisible2} overlayStyle={styles.overlay2} onBackdropPress={toggleOverlay2}>
         <ScrollView>
           <MapView style={styles.map}>
             <Marker coordinate={{ latitude: 59.3251172, longitude: 18.0710935 }} image={require("../assets/pin.png")} />
@@ -140,7 +140,7 @@ const HobbiesScreen = () => {
       </Overlay>
       <Overlay isVisible={overlayVisible3} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay3}>
         <View style={styles.container2}>
-          <Text style={styles.textcook}>Les pêchés mignons que j'aime cuisiner :</Text>
+          <Text style={styles.textcook}>Les pêchés mignons que j'adore cuisiner :</Text>
           <Image source={require("../assets/tartiflette.png")} style={styles.cookimage} resizeMode="stretch" />
           <Image source={require("../assets/wokcrevettesriz.jpg")} style={styles.cookimage} />
           <Image source={require("../assets/tajinedepoulet.jpg")} style={styles.cookimage} />
@@ -149,7 +149,7 @@ const HobbiesScreen = () => {
           <Image source={require("../assets/oeufmolletfrit.jpeg")} style={styles.cookimage} />
         </View>
       </Overlay>
-      <Overlay isVisible={overlayVisible4} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay4}>
+      <Overlay isVisible={overlayVisible4} overlayStyle={styles.overlay2} onBackdropPress={toggleOverlay4}>
         <RNMasonryScroll
           removeClippedSubviews={true}
           columns={isHorizontal ? 3 : 2}
@@ -218,6 +218,7 @@ const styles = StyleSheet.create({
   },
 
   textcook: {
+    textAlign: "center",
     color: "#4f8868",
     fontSize: 18,
     fontWeight: "800",
@@ -253,8 +254,9 @@ const styles = StyleSheet.create({
   },
   cookimage: {
     height: 140,
-    width: 178,
-    margin: 8,
+    width: 155,
+    margin: 4,
+    borderRadius: 5,
   },
   catimage: {
     height: 350,
@@ -262,15 +264,20 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 40,
   },
-  catimage2: {
-    height: 155,
-    width: 155,
-    margin: 5,
-    borderRadius: 100,
-  },
-  overlay: {
+  overlay2: {
     backgroundColor: "#FFFEFA",
     width: "100%",
+    height: "85%",
+    borderRadius: 20,
+    opacity: 0.95,
+    margin: 40,
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  overlay: {
+    backgroundColor: "#e8fcf6",
+    width: "85%",
     height: "85%",
     borderRadius: 20,
     opacity: 0.95,
