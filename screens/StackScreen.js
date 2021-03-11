@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#C7F7E7",
     justifyContent: "flex-start",
     alignItems: "center",
-    paddingTop: 50,
+    paddingTop: 100,
   },
   stackview: {
     flexDirection: "row",
