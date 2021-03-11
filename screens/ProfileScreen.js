@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   container1: {
-    paddingTop: 20,
+    paddingTop: 60,
     justifyContent: "flex-start",
     alignItems: "center",
     height: "75%",

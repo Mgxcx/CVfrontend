@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#e8fcf6",
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 30,
+    paddingTop: 40,
   },
   card: {
     marginTop: 20,
