@@ -1,5 +1,4 @@
 import React from "react";
-import { LogBox } from "react-native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -12,11 +11,11 @@ import {
   Ionicons,
   MaterialCommunityIcons,
   FontAwesome5,
+  AntDesign,
 } from "@expo/vector-icons";
 
 import { Avatar, Chip } from "react-native-paper";
-
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, LogBox, Linking } from "react-native";
 
 import ProfileScreen from "./screens/ProfileScreen";
 import ExperiencesScreen from "./screens/ExperiencesScreen";
@@ -148,6 +147,46 @@ const CustomDrawerContent = () => {
       <Chip mode="outlined" style={styles.chip} textStyle={{ color: "#F9FAF9" }}>
         <FontAwesome5 name="paint-brush" size={18} color="#3c6f75" /> Créative
       </Chip>
+      <View style={styles.container2}>
+        <View style={{ flexDirection: "row" }}>
+          <FontAwesome
+            name="linkedin-square"
+            size={40}
+            color="#3c6f75"
+            style={styles.socialicon}
+            onPress={() => {
+              Linking.openURL("https://www.linkedin.com/in/margaux-chevreux-377586a4/");
+            }}
+          />
+          <FontAwesome
+            name="github-square"
+            size={40}
+            color="#3c6f75"
+            onPress={() => {
+              Linking.openURL("https://github.com/Mgxcx");
+            }}
+          />
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          <FontAwesome
+            name="twitter-square"
+            size={40}
+            color="#3c6f75"
+            style={styles.socialicon}
+            onPress={() => {
+              Linking.openURL("https://twitter.com/mgxcx");
+            }}
+          />
+          <FontAwesome5
+            name="instagram-square"
+            size={40}
+            color="#3c6f75"
+            onPress={() => {
+              Linking.openURL("https://www.instagram.com/mgxcx/");
+            }}
+          />
+        </View>
+      </View>
     </View>
   );
 };
@@ -169,10 +208,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#C7F7E7",
-    paddingTop: 130,
+  },
+  container2: {
+    flex: 0.4,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: "#C7F7E7",
   },
   avatar: {
     marginBottom: 20,
@@ -185,5 +229,9 @@ const styles = StyleSheet.create({
     color: "#F9FAF9",
     fontSize: 18,
     marginBottom: 20,
+  },
+  socialicon: {
+    marginRight: 15,
+    marginBottom: 15,
   },
 });

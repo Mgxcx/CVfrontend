@@ -118,7 +118,7 @@ const ProfileScreen = ({ navigation }) => {
   }
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
+    <View>
       <ImageBackground source={require("../assets/landscape1.jpg")} style={styles.image}>
         <View style={styles.container}>
           <View style={styles.badgecontainer}>
@@ -211,8 +211,9 @@ const ProfileScreen = ({ navigation }) => {
           </View>
 
           <Overlay isVisible={overlayVisible2} overlayStyle={styles.overlay} onBackdropPress={toggleOverlay2}>
-            <View style={{ flex: 1 }}>
+            <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={{ flex: 1 }}>
               <ScrollView style={{ flex: 1 }}>{chatMessages}</ScrollView>
+
               <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}>
                 <View style={styles.inputandsend}>
                   <TextInput
@@ -234,11 +235,11 @@ const ProfileScreen = ({ navigation }) => {
                   />
                 </View>
               </KeyboardAvoidingView>
-            </View>
+            </KeyboardAvoidingView>
           </Overlay>
         </View>
       </ImageBackground>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 

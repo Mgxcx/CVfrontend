@@ -339,6 +339,7 @@ function mapStateToProps(state) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#e8fcf6",
   },
   coursecontainer: {
@@ -379,6 +380,7 @@ const styles = StyleSheet.create({
   },
   step: {
     flexDirection: "row",
+    paddingTop: 15,
     height: 360,
     marginLeft: 10,
     marginBottom: 20,
