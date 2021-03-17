@@ -2,6 +2,8 @@
 
 Projet d'application "CV" React Native en cours. Commencé le samedi 13 Février. 
 
+![alt text](https://j.gifs.com/yo1r2n.gif)
+
 https://www.youtube.com/watch?v=TdHJgz8KJgU
 
 ![alt text](https://res.cloudinary.com/drchl4shw/image/upload/v1614885555/CV1_rrizjr.png)
