@@ -1,6 +1,6 @@
 #CVFrontend
 
-Projet d'application "CV" React Native en cours. Commencé le samedi 13 Février. 
+Projet d'application "CV" React Native. 
 
 ![alt text](https://j.gifs.com/yo1r2n.gif)
 
